@@ -12,7 +12,7 @@ In this task, you should implement an API that provides CRUD operations for the 
 3. Implement a serializer for this model.
 4. Create api views for the following endpoints:
     * `GET api/cinema/movies/` - should return a list of the all movies
-    * `GET api/cinema/movies/<pk>/` - should return a movies with given id 
+    * `GET api/cinema/movies/<pk>/` - should return a movie with given id 
     * `POST api/cinema/movies/` - should create a new movie based on passed data
-    * `PUT api/cinema/movies/<pk>/` - should update the movies with given id based on passed data
-    * `DELETE api/cinema/movies/<pk>/` - should delete the movies with given id
+    * `PUT api/cinema/movies/<pk>/` - should update the movie with given id based on passed data
+    * `DELETE api/cinema/movies/<pk>/` - should delete the movie with given id
