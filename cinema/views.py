@@ -1,5 +1,4 @@
 from rest_framework.decorators import api_view
-from rest_framework.parsers import JSONParser
 from rest_framework.response import Response
 from rest_framework import status
 
@@ -41,6 +40,4 @@ def movie_with_id(request, pk):
 
     if request.method == "DELETE":
         movie.delete()
-        movies = Movie.objects.all()
-        serializer = MovieSerializer(movies, many=True)
-        return Response(serializer.data, status=status.HTTP_200_OK)
+        return Response(status=status.HTTP_204_NO_CONTENT)
