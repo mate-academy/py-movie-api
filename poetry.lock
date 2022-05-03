@@ -79,39 +79,12 @@ django = ">=2.2"
 pytz = "*"
 
 [[package]]
-name = "modcall"
-version = "0.1.0"
-description = "Create callable modules"
-category = "main"
-optional = false
-python-versions = ">=3.8,<4.0"
-
-[[package]]
-name = "movies"
-version = "1.0.0"
-description = "A simple printer of nested list"
-category = "main"
-optional = false
-python-versions = "*"
-
-[[package]]
 name = "mypy-extensions"
 version = "0.4.3"
 description = "Experimental type system extensions for programs checked with the mypy typechecker."
 category = "dev"
 optional = false
 python-versions = "*"
-
-[[package]]
-name = "namespace"
-version = "0.1.4"
-description = "Simple namespaces"
-category = "main"
-optional = false
-python-versions = ">=3.8,<4.0"
-
-[package.dependencies]
-modcall = ">=0.1.0,<0.2.0"
 
 [[package]]
 name = "pathspec"
@@ -168,7 +141,7 @@ python-versions = ">=2"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.10"
-content-hash = "56c8c61f4ed4b46311d009e26076427c866bc1abd18e0e1a3854910adea5dba9"
+content-hash = "38cb93eaa7dc48da60d4e458ba121d9dabd151505d89b50846d6b7153fa3322c"
 
 [metadata.files]
 asgiref = [
@@ -216,20 +189,9 @@ djangorestframework = [
     {file = "djangorestframework-3.13.1-py3-none-any.whl", hash = "sha256:24c4bf58ed7e85d1fe4ba250ab2da926d263cd57d64b03e8dcef0ac683f8b1aa"},
     {file = "djangorestframework-3.13.1.tar.gz", hash = "sha256:0c33407ce23acc68eca2a6e46424b008c9c02eceb8cf18581921d0092bc1f2ee"},
 ]
-modcall = [
-    {file = "modcall-0.1.0-py3-none-any.whl", hash = "sha256:c7412e325bd715489d8c8d72f68eba6c2c9197ea3befb84f850012640beb8a7b"},
-    {file = "modcall-0.1.0.tar.gz", hash = "sha256:a02a90ff1782018b2b29052a1cd05997cb326b35ed10ade987f3b982b3da648c"},
-]
-movies = [
-    {file = "movies-1.0.0.zip", hash = "sha256:96438334d65a334d8fdeb7a5f05997650c4463932da137d6382f6cfdb84190b7"},
-]
 mypy-extensions = [
     {file = "mypy_extensions-0.4.3-py2.py3-none-any.whl", hash = "sha256:090fedd75945a69ae91ce1303b5824f428daf5a028d2f6ab8a299250a846f15d"},
     {file = "mypy_extensions-0.4.3.tar.gz", hash = "sha256:2d82818f5bb3e369420cb3c4060a7970edba416647068eb4c5343488a6c604a8"},
-]
-namespace = [
-    {file = "namespace-0.1.4-py3-none-any.whl", hash = "sha256:1ecc107623193f7ca9df8fe190e85e798b59c2bb93fa34d7cad41a6ed4403a3f"},
-    {file = "namespace-0.1.4.tar.gz", hash = "sha256:e909e18270ef63d36681b5cf618ef6ae4f9192d69a577bcddc49631d46692bf3"},
 ]
 pathspec = [
     {file = "pathspec-0.9.0-py2.py3-none-any.whl", hash = "sha256:7d15c4ddb0b5c802d161efc417ec1a2558ea2653c2e8ad9c19098201dc1c993a"},
