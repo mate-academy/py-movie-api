@@ -1,4 +1,6 @@
 from rest_framework.decorators import api_view
+from rest_framework.generics import get_object_or_404
+from django.shortcuts import get_object_or_404
 from rest_framework.response import Response
 from rest_framework import status
 
@@ -25,8 +27,9 @@ def movie_list(request):
 
 @api_view(["PUT", "PATCH", "DELETE", "GET"])
 def movie_detail(request, pk):
+    movie = get_object_or_404(Movie, pk=pk)
+
     if request.method == "PUT" or request.method == "PATCH":
-        movie = Movie.objects.get(pk=pk)
         serializer = MovieSerializer(movie, data=request.data)
 
         if serializer.is_valid():
@@ -36,10 +39,10 @@ def movie_detail(request, pk):
         return Response(serializer.errors, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
 
     if request.method == "GET":
-        movie = Movie.objects.get(pk=pk)
         serializer = MovieSerializer(movie)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
     if request.method == "DELETE":
-        movie = Movie.objects.get(pk=pk)
         movie.delete()
+
+    return Response(status=status.HTTP_204_NO_CONTENT)
