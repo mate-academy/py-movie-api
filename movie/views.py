@@ -26,7 +26,6 @@ def movies_list(request):
 
 @api_view(["GET", "PUT", "DELETE"])
 def movie_get(request, pk):
-
     movie = get_object_or_404(Movie, pk=pk)
 
     if request.method == "GET":
@@ -44,7 +43,6 @@ def movie_get(request, pk):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     if request.method == "DELETE":
-
         movie.delete()
 
-        return Response({'message': 'Tutorial was deleted successfully!'}, status=status.HTTP_204_NO_CONTENT)
+        return Response(status=status.HTTP_204_NO_CONTENT)
