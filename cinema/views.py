@@ -6,17 +6,12 @@ from cinema.models import Movie
 from cinema.serializers import MovieSerializer
 
 
-@api_view(["GET", "POST", "PUT", "DELETE"])
-def movie_view(request, pk=None):
+@api_view(["GET", "POST"])
+def movie_view(request):
     if request.method == "GET":
-        if pk:
-            movie = Movie.objects.get(id=pk)
-            serializer = MovieSerializer(movie)
-            return Response(serializer.data, status=status.HTTP_200_OK)
-        else:
-            movies = Movie.objects.all()
-            serializer = MovieSerializer(movies, many=True)
-            return Response(serializer.data, status=status.HTTP_200_OK)
+        movies = Movie.objects.all()
+        serializer = MovieSerializer(movies, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
     if request.method == "POST":
         serializer = MovieSerializer(data=request.data)
@@ -26,6 +21,17 @@ def movie_view(request, pk=None):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(["GET", "PUT", "DELETE"])
+def movie_detail(request, pk):
+    try:
+        movie = Movie.objects.get(id=pk)
+    except Movie.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+    if request.method == "GET":
+        serializer = MovieSerializer(movie)
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
     if request.method == "PUT":
         movie = Movie.objects.get(id=pk)
@@ -39,4 +45,5 @@ def movie_view(request, pk=None):
     if request.method == "DELETE":
         movie = Movie.objects.get(id=pk)
         movie.delete()
+        print("deleted")
         return Response(status=status.HTTP_204_NO_CONTENT)
