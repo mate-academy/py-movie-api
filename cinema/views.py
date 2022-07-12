@@ -22,7 +22,7 @@ def movie_list(request):
 
 
 @api_view(["GET", "PUT", "DELETE"])
-def movie_by_id(request, pk):
+def movie_detail(request, pk):
 
     try:
         movie = Movie.objects.get(pk=pk)
