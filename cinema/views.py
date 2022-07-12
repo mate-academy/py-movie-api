@@ -9,7 +9,7 @@ from cinema.serializers import MovieSerializer
 @api_view(["GET", "POST"])
 def movie_list(request):
     """
-    List all code snippets, or create a new snippet.
+    List all code movies, or create a new movie.
     """
     if request.method == 'GET':
         snippets = Movie.objects.all()
@@ -32,7 +32,7 @@ def movie_list(request):
 @api_view(['GET', 'PUT', 'DELETE'])
 def movie_detail(request, pk):
     """
-    Retrieve, update or delete a code snippet.
+    Retrieve, update or delete a code movie.
     """
     try:
         movie = Movie.objects.get(pk=pk)
