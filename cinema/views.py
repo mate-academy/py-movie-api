@@ -1,8 +1,5 @@
-from django.http import HttpResponse, HttpResponseRedirect
-from django.urls import reverse
 from rest_framework import status
 from rest_framework.decorators import api_view
-from rest_framework.parsers import JSONParser
 from rest_framework.response import Response
 
 from cinema.models import Movie
@@ -29,7 +26,7 @@ def movie_list(request):
 
             return Response(serializer.data, status=status.HTTP_201_CREATED)
 
-        return Response(serializer.errors, status=400)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 @api_view(['GET', 'PUT', 'DELETE'])
@@ -40,7 +37,7 @@ def movie_detail(request, pk):
     try:
         movie = Movie.objects.get(pk=pk)
     except Movie.DoesNotExist:
-        return HttpResponse(status=404)
+        return Response(status=status.HTTP_404_NOT_FOUND)
 
     if request.method == "GET":
         serializer = MovieSerializer(movie)
@@ -54,9 +51,9 @@ def movie_detail(request, pk):
 
             return Response(serializer.data)
 
-        return Response(serializer.errors, status=400)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     elif request.method == 'DELETE':
         movie.delete()
 
-        return HttpResponseRedirect(reverse("cinema:movie_list"))
+        return Response(status=status.HTTP_204_NO_CONTENT)
