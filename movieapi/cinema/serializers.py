@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from cinema.models import Movie
+from movieapi.cinema.models import Movie
 
 
 class MovieSerializer(serializers.Serializer):
