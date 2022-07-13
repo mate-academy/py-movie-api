@@ -8,7 +8,6 @@ from cinema.serializers import MovieSerializer
 
 
 @api_view(["GET", "POST"])
-@csrf_exempt
 def movie_list(request):
     if request.method == "GET":
         movies = Movie.objects.all()
@@ -26,7 +25,6 @@ def movie_list(request):
 
 
 @api_view(["GET", "PUT", "DELETE"])
-@csrf_exempt
 def movie_detail(request, pk):
     try:
         movie = Movie.objects.get(pk=pk)
