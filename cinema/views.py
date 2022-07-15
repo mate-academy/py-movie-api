@@ -13,7 +13,7 @@ def movie_list(request):
     if request.method == 'GET':
         cinemas = Cinema.objects.all()
         serializer = CinemaSerializer(cinemas, many=True)
-        return Response(serializer.data)
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
     elif request.method == 'POST':
         serializer = CinemaSerializer(data=request.data)
@@ -30,7 +30,7 @@ def movie_detail(request, pk):
 
     if request.method == 'GET':
         serializer = CinemaSerializer(cinema)
-        return Response(serializer.data)
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
     elif request.method == 'PUT':
         serializer = CinemaSerializer(cinema, data=request.data)
