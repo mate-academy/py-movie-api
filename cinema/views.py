@@ -20,7 +20,7 @@ def cinema_create(request):
     if request.method == "GET":
         movies = Movie.objects.all()
         serializer = MovieSerializer(movies, many=True)
-        return JsonResponse(serializer.data, status=HTTPStatus.OK)
+        return JsonResponse(serializer.data, status=HTTPStatus.OK, safe=False)
 
 
 @api_view(http_method_names=["GET", "PUT", "DELETE"])
