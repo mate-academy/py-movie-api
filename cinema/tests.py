@@ -38,7 +38,7 @@ class TestCinemaApiCRUD(TestCase):
         response = self.client.put(
             reverse("cinema:cinema-GET-PUT-DELETE", kwargs={"pk": 1}),
             data={
-                "title": "RenameTitle1",
+                "title": "RenameTitle",
                 "description": "TestDescription",
                 "duration": 120
             },
