@@ -1,10 +1,8 @@
 from http import HTTPStatus
 
 from django.http import JsonResponse, HttpResponse
-from django.shortcuts import render
-from django.views.decorators.csrf import csrf_exempt
 from rest_framework.decorators import api_view
-from rest_framework.parsers import JSONParser
+
 
 from cinema.models import Movie
 from cinema.serializers import MovieSerializer
@@ -41,9 +39,3 @@ def cinema_get_put_delete(request, pk):
     if request.method == "DELETE":
         movie.delete()
         return HttpResponse(status=HTTPStatus.NO_CONTENT)
-
-
-
-
-
-
