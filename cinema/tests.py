@@ -1,7 +1,7 @@
 from http import HTTPStatus
 
 from django.test import TestCase
-from rest_framework.parsers import JSONParser
+from django.urls import reverse
 
 from cinema.models import Movie
 
@@ -17,8 +17,8 @@ class TestCinemaApiCRUD(TestCase):
 
     def test_post_method(self):
         response = self.client.post(
-            "/api/cinema/movies/",
-            {
+            reverse("cinema:cinema-POST-GET-all"),
+            data={
                 "title": "NewTitle",
                 "description": "NewDescription",
                 "duration": 150
@@ -30,14 +30,14 @@ class TestCinemaApiCRUD(TestCase):
         self.assertEqual(response.json()["title"], movie.title)
 
     def test_get_method(self):
-        response = self.client.get("/api/cinema/movies/1/")
+        response = self.client.get(reverse("cinema:cinema-GET-PUT-DELETE", kwargs={"pk": 1}))
         self.assertEqual(response.status_code, HTTPStatus.OK)
         self.assertEqual(response.json()["title"], "TestTitle")
 
     def test_put_method(self):
         response = self.client.put(
-            "/api/cinema/movies/1/",
-            {
+            reverse("cinema:cinema-GET-PUT-DELETE", kwargs={"pk": 1}),
+            data={
                 "title": "RenameTitle1",
                 "description": "TestDescription",
                 "duration": 120
@@ -46,3 +46,7 @@ class TestCinemaApiCRUD(TestCase):
         )
         self.assertEqual(response.status_code, HTTPStatus.ACCEPTED)
         self.assertEqual(response.json()["title"], "RenameTitle")
+
+    def test_delete_method(self):
+        response = self.client.delete(reverse("cinema:cinema-GET-PUT-DELETE", kwargs={"pk": 1}))
+        self.assertEqual(response.status_code, HTTPStatus.NO_CONTENT)
