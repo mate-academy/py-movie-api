@@ -32,14 +32,15 @@ def cinema_get_put_delete(request, pk):
         return JsonResponse(serializer.data, status=HTTPStatus.OK)
 
     if request.method == "PUT":
-        serializer = MovieSerializer(request.data)
+        serializer = MovieSerializer(movie, request.data)
         if serializer.is_valid():
             serializer.save()
             return JsonResponse(serializer.data, status=HTTPStatus.ACCEPTED)
         return JsonResponse(serializer.errors, status=HTTPStatus.BAD_REQUEST)
 
     if request.method == "DELETE":
-        pass
+        movie.delete()
+        return HttpResponse(status=HTTPStatus.NO_CONTENT)
 
 
 
