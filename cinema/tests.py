@@ -5,8 +5,6 @@ from django.urls import reverse
 
 from cinema.models import Movie
 
-from rest_framework.test import APIClient
-
 
 class TestCinemaApiCRUD(TestCase):
     @classmethod
@@ -37,15 +35,14 @@ class TestCinemaApiCRUD(TestCase):
         self.assertEqual(response.json()["title"], "TestTitle")
 
     def test_put_method(self):
-        client = APIClient()
-        response = client.put(
+        response = self.client.put(
             reverse("cinema:cinema-GET-PUT-DELETE", kwargs={"pk": 1}),
-            {
+            data={
                 "title": "RenameTitle",
-                "description": "TestDescription",
-                "duration": 120
-            }
-
+                "description": "NewDescription",
+                "duration": 150
+            },
+            content_type="application/json"
         )
         self.assertEqual(response.status_code, HTTPStatus.ACCEPTED)
         self.assertEqual(response.json()["title"], "RenameTitle")
