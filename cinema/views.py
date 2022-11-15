@@ -1,6 +1,7 @@
 from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.generics import get_object_or_404
+from rest_framework.request import Request
 from rest_framework.response import Response
 
 from cinema.models import Movie
@@ -8,7 +9,7 @@ from cinema.serializers import MovieSerializer
 
 
 @api_view(["GET", "POST"])
-def movie_list_view(request) -> Response:
+def movie_list_view(request: Request) -> Response:
     if request.method == "GET":
         movies = Movie.objects.all()
         serializer = MovieSerializer(movies, many=True)
@@ -25,7 +26,7 @@ def movie_list_view(request) -> Response:
 
 
 @api_view(["GET", "PUT", "DELETE"])
-def movie_detail_view(request, pk: int) -> Response:
+def movie_detail_view(request: Request, pk: int) -> Response:
     movie = get_object_or_404(Movie, pk=pk)
 
     if request.method == "GET":
