@@ -1,5 +1,7 @@
 from django.urls import path
 
+from cinema.views import movie_list
+
 urlpatterns = [
     path(
         "movies/",
