@@ -26,7 +26,7 @@ def movie_list(request) -> Response:
 
 
 @api_view(["GET", "PUT", "DELETE"])
-def movie_detail(request, pk: int):
+def movie_detail(request, pk: int) -> Response:
     try:
         movie = Movie.objects.get(pk=pk)
     except Movie.DoesNotExist:
