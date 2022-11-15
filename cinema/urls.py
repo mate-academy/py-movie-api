@@ -2,9 +2,9 @@ from django.urls import path
 
 urlpatterns = [
     path(
-        "cinames/",
-        cinema_list,
-        name="cinema-list"
+        "movies/",
+        movie_list,
+        name="movies-list"
     )
 ]
 
