@@ -17,6 +17,6 @@ class MovieSerializer(serializers.Serializer):
         instance.description = validated_data.get(
             "description", instance.description
         )
-        instance.duration = validated_data.çget("duration", instance.duration)
+        instance.duration = validated_data.get("duration", instance.duration)
         instance.save()
         return instance
