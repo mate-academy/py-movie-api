@@ -29,11 +29,11 @@ def movie_detail(request, pk):
     try:
         movie = Movie.objects.get(id=pk)
     except Movie.DoesNotExist:
-        return Response(status=status.HTTP_204_NO_CONTENT)
+        return Response(status=status.HTTP_404_NOT_FOUND)
 
     if request.method == "GET":
         serializer = MovieSerializer(movie)
-        return Response(serializer.data, status=status.HTTP_404_NOT_FOUND)
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
     if request.method == "PUT":
         serializer = MovieSerializer(movie, data=request.data)
