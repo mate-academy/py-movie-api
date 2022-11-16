@@ -1,10 +1,10 @@
 from django.urls import path
 
-from cinema.views import movies_list, movies_object
+from cinema.views import movie_list, movie_detail
 
 urlpatterns = [
-    path("movies/", movies_list),
-    path("movies/<int:pk>/", movies_object)
+    path("movies/", movie_list),
+    path("movies/<int:pk>/", movie_detail)
 ]
 
 app_name = "cinema"
