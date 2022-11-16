@@ -58,7 +58,3 @@ def movie_detail(request, pk):
         return Response(
             status=status.HTTP_200_OK
         )
-
-    return Response(
-
-    )
