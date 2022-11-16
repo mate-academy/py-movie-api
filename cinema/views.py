@@ -47,7 +47,7 @@ def movie_detail(request, pk: int) -> Response:
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-    elif request.method == "DELETE":
+    if request.method == "DELETE":
         movie.delete()
 
         return Response(status=status.HTTP_204_NO_CONTENT)
