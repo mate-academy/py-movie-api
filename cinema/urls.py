@@ -5,7 +5,7 @@ from cinema.views import movie_list
 
 urlpatterns = [
     path("movies/", movie_list, name="movie-list"),
-    path("movies/<int:pk>/", views.snippet_detail),
+    path("movies/<int:pk>/", views.movie_detail),
 ]
 
 app_name = "cinema"

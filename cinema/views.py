@@ -23,9 +23,11 @@ def movie_list(request):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
 
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-@csrf_exempt
-def snippet_detail(request, pk):
+
+@api_view(["GET", "PUT", "DELETE"])
+def movie_detail(request, pk):
     try:
         snippet = Movie.objects.get(pk=pk)
     except Movie.DoesNotExist:
@@ -36,8 +38,7 @@ def snippet_detail(request, pk):
         return Response(serializer.data)
 
     elif request.method == 'PUT':
-        data = JSONParser().parse(request)
-        serializer = MovieSerializer(snippet, data=data)
+        serializer = MovieSerializer(snippet, data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
