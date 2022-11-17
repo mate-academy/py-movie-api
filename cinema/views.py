@@ -35,7 +35,7 @@ def movie_info(request, pk):
 
         return Response(serializer.data, status=status.HTTP_200_OK)
 
-    if request.method == 'PUT':
+    if request.method == "PUT":
         serializer = MovieSerializer(movie, data=request.data)
 
         if serializer.is_valid():
@@ -49,6 +49,3 @@ def movie_info(request, pk):
         return Response(status=status.HTTP_204_NO_CONTENT)
 
     return Response("Method not allowed", status=status.HTTP_405_METHOD_NOT_ALLOWED)
-
-
-
