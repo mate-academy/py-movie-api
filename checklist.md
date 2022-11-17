@@ -30,14 +30,18 @@ if request.method == "GET":
 2. If you specify `max_length` then it's more reasonable 
 to use `CharField` instead of `TextField`:
 
-```python
-class Book(models.Model):
-    description = models.TextField(max_length=255)
-```
+Good example:
 
 ```python
 class Book(models.Model):
     description = models.CharField(max_length=255)
+```
+
+Bad example:
+
+```python
+class Book(models.Model):
+    description = models.TextField(max_length=255)
 ```
 
 3. Make sure that all your endpoint adds with `/`:
