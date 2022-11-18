@@ -1,7 +1,6 @@
 from django.http import HttpResponse
-from django.views.decorators.csrf import csrf_exempt
+from django.shortcuts import get_object_or_404
 from rest_framework.decorators import api_view
-from rest_framework.parsers import JSONParser
 from rest_framework.response import Response
 from rest_framework import status
 
@@ -28,20 +27,18 @@ def movie_list(request):
 
 @api_view(["GET", "PUT", "DELETE"])
 def movie_detail(request, pk):
-    try:
-        snippet = Movie.objects.get(pk=pk)
-    except Movie.DoesNotExist:
-        return HttpResponse(status=status.HTTP_404_NOT_FOUND)
+    snippet = Movie.objects.get(pk=pk)
+    get_object_or_404(snippet)
 
     if request.method == 'GET':
         serializer = MovieSerializer(snippet)
-        return Response(serializer.data)
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
     elif request.method == 'PUT':
         serializer = MovieSerializer(snippet, data=request.data)
         if serializer.is_valid():
             serializer.save()
-            return Response(serializer.data)
+            return Response(serializer.data, status=status.HTTP_200_OK)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     elif request.method == 'DELETE':
