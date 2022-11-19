@@ -25,7 +25,7 @@ def movie_list(request):
 
 
 @api_view(["GET", "PUT", "DELETE"])
-def movie_pk(request, pk):
+def movie_detail(request, pk):
     movie = get_object_or_404(Movie, pk=pk)
 
     if request.method == "GET":
@@ -33,10 +33,10 @@ def movie_pk(request, pk):
         return Response(serializer.data, status=status.HTTP_200_OK)
 
     if request.method == "PUT":
-        serializer = MovieSerializer(data=request.data)
+        serializer = MovieSerializer(movie, data=request.data)
 
         if serializer.is_valid():
-            serializer.update(movie, validated_data=request.data)
+            serializer.save()
             return Response(serializer.data, status=status.HTTP_200_OK)
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
