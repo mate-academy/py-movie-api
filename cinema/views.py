@@ -1,9 +1,11 @@
 from rest_framework.decorators import api_view
+from rest_framework.generics import get_object_or_404
 from rest_framework.response import Response
 from rest_framework import status
 
 from cinema.models import Movie
 from cinema.serializers import MovieSerializer
+from user.models import User
 
 
 @api_view(["GET", "POST"])
@@ -25,10 +27,8 @@ def movies_list(request):
 
 @api_view(["GET", "PUT", "DELETE"])
 def movies_detail(request, pk):
-    try:
-        instance = Movie.objects.get(id=pk)
-    except Movie.DoesNotExist:
-        return Response(status=status.HTTP_404_NOT_FOUND)
+
+    instance = get_object_or_404(User, id=pk)
 
     if request.method == "GET":
         serializer = MovieSerializer(instance)
@@ -51,4 +51,4 @@ def movies_detail(request, pk):
         else:
             data["failure"] = "delete failed"
 
-        return Response(data=data)
+        return Response(data=data, status=status.HTTP_200_OK)
