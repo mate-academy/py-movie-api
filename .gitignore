@@ -138,7 +138,11 @@ dmypy.json
 
 # Cython debug symbols
 cython_debug/
-
+app/__pycache__
+cinema/__pycache__
+cinema/migrations/__pycache__
+user/__pycache__
+user/migrations/__pycache__
 *.log
 *.pot
 *.pyc
