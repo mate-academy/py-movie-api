@@ -8,7 +8,6 @@ class Movie(models.Model):
 
     class Meta:
         ordering = ["title"]
-        verbose_name_plural = "movies"
 
-    def __str__(self):
+    def __str__(self) -> str:
         return self.title
