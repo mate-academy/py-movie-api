@@ -32,18 +32,18 @@ def movie_by_id(request, pk):
 
     if request.method == "PUT":
         movie = get_object_or_404(Movie, pk=pk)
-        data = MovieSerializer(instance=movie, data=request.data)
+        serializer = MovieSerializer(instance=movie, data=request.data)
 
-        if data.is_valid():
-            data.save()
-            return Response(data.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
         else:
             return Response(status=status.HTTP_404_NOT_FOUND)
 
     if request.method == "DELETE":
         movie = get_object_or_404(Movie, pk=pk)
         movie.delete()
-        return Response(status=status.HTTP_202_ACCEPTED)
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 
 
