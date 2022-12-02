@@ -4,7 +4,7 @@
 .env
 venv/
 .pytest_cache/
-**__pycache__/
+__pycache__/
 db.sqlite3
 /django-debug-toolbar
 .pyc
