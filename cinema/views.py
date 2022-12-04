@@ -6,7 +6,7 @@ from cinema.models import Movie
 from cinema.serializers import MovieSerializer
 
 
-@api_view(["GET", "POST", "PUT", "DELETE"])
+@api_view(["GET", "POST"])
 def movie_list(request):
     if request.method == "GET":
         movies = Movie.objects.all()
