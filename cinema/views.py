@@ -20,8 +20,8 @@ def movie_list(request):
             return Response(
                 movie_serializer.data, status=status.HTTP_201_CREATED
             )
-        else:
-            return Response(status=status.HTTP_400_BAD_REQUEST)
+
+        return Response(status=status.HTTP_400_BAD_REQUEST)
 
 
 @api_view(["GET", "PUT", "DELETE"])
@@ -37,8 +37,8 @@ def movie_detail(request, pk):
         if movie_serializer.is_valid():
             movie_serializer.save()
             return Response(movie_serializer.data, status=status.HTTP_200_OK)
-        else:
-            return Response(status=status.HTTP_400_BAD_REQUEST)
+
+        return Response(status=status.HTTP_400_BAD_REQUEST)
 
     if request.method == "DELETE":
         movie.delete()
