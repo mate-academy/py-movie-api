@@ -23,7 +23,7 @@ def movie_list(request):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-@api_view(["GET", "PUT", "DELETE"])
+@api_view(["GET", "PUT", "PATCH", "DELETE"])
 def movie_detail(request, pk):
 
     try:
@@ -42,6 +42,12 @@ def movie_detail(request, pk):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    if request.method == "PATCH":
+        serializer = MovieSerializer(movie, data=request.data, partial=True)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_200_OK)
 
     if request.method == "DELETE":
         movie.delete()
