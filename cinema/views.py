@@ -32,12 +32,12 @@ def movie_detail(request, pk):
         serializer = MovieSerializer(movie)
         return Response(serializer.data)
 
-    elif request.method == "PUT":
+    if request.method == "PUT":
         serializer = MovieSerializer(movie, data=request.data)
         serializer.is_valid(raise_exception=True)
         serializer.save()
         return Response(serializer.data)
 
-    elif request.method == "DELETE":
+    if request.method == "DELETE":
         movie.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
