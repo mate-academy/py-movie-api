@@ -25,13 +25,13 @@ def movies_list(request):
 @api_view(["GET", "PUT", "DELETE"])
 def movie_instance(request, pk):
 
+    movie = Movie.objects.get(id=pk)
+
     if request.method == "GET":
-        movie = Movie.objects.get(id=pk)
         serializer = MovieSerializer(movie)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
     if request.method == "PUT":
-        movie = Movie.objects.get(id=pk)
         serializer = MovieSerializer(instance=movie, data=request.data)
         if serializer.is_valid():
             serializer.save()
@@ -39,7 +39,6 @@ def movie_instance(request, pk):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     if request.method == "DELETE":
-        movie = Movie.objects.get(id=pk)
         movie.delete()
         return Response(
             {"message": "Article with id `{}` has been deleted.".format(pk)},
