@@ -3,18 +3,18 @@ from rest_framework.response import Response
 from rest_framework import status
 
 from cinema.models import Movie
-from cinema.serializers import CinemaSerializer
+from cinema.serializers import MovieSerializer
 
 
 @api_view(["GET", "POST"])
 def movies_list(request):
     if request.method == "GET":
         movies = Movie.objects.all()
-        serializers = CinemaSerializer(movies, many=True)
+        serializers = MovieSerializer(movies, many=True)
         return Response(serializers.data, status=status.HTTP_200_OK)
 
     if request.method == "POST":
-        serializers = CinemaSerializer(data=request.data)
+        serializers = MovieSerializer(data=request.data)
 
         if serializers.is_valid():
             serializers.save()
@@ -27,12 +27,12 @@ def movies_list(request):
 def movies_detail(request, pk):
     if request.method == "GET":
         movie = Movie.objects.get(pk=pk)
-        serializers = CinemaSerializer(movie)
+        serializers = MovieSerializer(movie)
         return Response(serializers.data, status=status.HTTP_200_OK)
 
     if request.method == "PUT":
         movie = Movie.objects.get(pk=pk)
-        serializers = CinemaSerializer(movie, data=request.data)
+        serializers = MovieSerializer(movie, data=request.data)
 
         serializers.is_valid(raise_exception=True)
         serializers.save()
