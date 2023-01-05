@@ -34,11 +34,9 @@ def movies_detail(request, pk):
         movie = Movie.objects.get(pk=pk)
         serializers = CinemaSerializer(movie, data=request.data)
 
-        if serializers.is_valid():
-            serializers.save()
-            return Response(serializers.data, status=status.HTTP_200_OK)
-
-        return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
+        serializers.is_valid(raise_exception=True)
+        serializers.save()
+        return Response(serializers.data, status=status.HTTP_200_OK)
 
     if request.method == "DELETE":
         movie = Movie.objects.get(pk=pk)
