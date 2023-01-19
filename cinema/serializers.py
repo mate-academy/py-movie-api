@@ -40,5 +40,5 @@ class ActorSerializer(serializers.ModelSerializer):
 
 class CinemaHallSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Actor
+        model = CinemaHall
         fields = ("name", "rows", "seats_in_row")
