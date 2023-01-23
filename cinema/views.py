@@ -1,4 +1,5 @@
 from rest_framework.decorators import api_view
+from rest_framework.generics import get_object_or_404
 from rest_framework.response import Response
 
 from cinema.models import Movie
@@ -25,9 +26,8 @@ def movie_list(request):
 
 @api_view(["GET", "PUT", "DELETE"])
 def movie_detail(request, pk):
-    try:
-        movie = Movie.objects.get(pk=pk)
-    except Movie.DoesNotExist:
+    movie = get_object_or_404(Movie, pk=pk)
+    if not movie:
         return Response(status=status.HTTP_404_NOT_FOUND)
 
     if request.method == "GET":
