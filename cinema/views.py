@@ -34,7 +34,7 @@ def movie_detail(request, pk):
         return Response(serializer.data, status=status.HTTP_200_OK)
 
     if request.method == 'PUT':
-        serializer = MovieSerializer(movie, data=request.data, partial=True)
+        serializer = MovieSerializer(movie, data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
