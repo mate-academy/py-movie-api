@@ -1,3 +1,4 @@
+from django.shortcuts import get_object_or_404
 from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
@@ -26,10 +27,7 @@ def movie_list(request):
 
 @api_view(["PUT", "GET", "DELETE"])
 def movie_detail(request, pk):
-    try:
-        movie = Movie.objects.get(pk=pk)
-    except Movie.DoesNotExist:
-        return Response(status=status.HTTP_404_NOT_FOUND)
+    movie = get_object_or_404(Movie, pk=pk)
 
     if request.method == 'GET':
         serializer = MovieSerializer(movie)
