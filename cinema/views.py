@@ -7,7 +7,7 @@ from cinema.models import Movie
 from cinema.serializers import MovieSerializer
 
 
-class MovieAPI(APIView):
+class MovieListAPIView(APIView):
     def get(self, request):
         movies = Movie.objects.all()
         serializer = MovieSerializer(movies, many=True)
@@ -18,14 +18,28 @@ class MovieAPI(APIView):
         serializer = MovieSerializer(data=request.data)
 
         if serializer.is_valid(raise_exception=True):
-            serializer.is_valid(raise_exception=True)
             serializer.save()
 
-        return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(
+            serializer.data,
+            status=status.HTTP_201_CREATED
+        )
+
+
+class MovieAPI(APIView):
+    def get(self, request, pk):
+        movie = get_object_or_404(Movie.objects.all(), pk=pk)
+        serializer = MovieSerializer(movie)
+
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
     def put(self, request, pk):
-        saved_movie = get_object_or_404(Movie.objects.all(), pk=pk)
-        serializer = MovieSerializer(instance=saved_movie, data=request.data, partial=True)
+        movie = get_object_or_404(Movie.objects.all(), pk=pk)
+        serializer = MovieSerializer(
+            instance=movie,
+            data=request.data,
+            partial=True
+        )
 
         if serializer.is_valid(raise_exception=True):
             serializer.save()
@@ -36,4 +50,7 @@ class MovieAPI(APIView):
         movie = get_object_or_404(Movie.objects.all(), pk=pk)
         movie.delete()
 
-        return Response({"message": f"Movie with id {pk} has been deleted."}, status.HTTP_200_OK)
+        return Response(
+            {"message": f"Movie with id {pk} has been deleted."},
+            status=status.HTTP_200_OK
+        )
