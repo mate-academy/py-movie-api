@@ -15,7 +15,7 @@ def movies_list(request):
 
         return Response(serializer.data, status=status.HTTP_200_OK)
 
-    if request.method == "POST":
+    elif request.method == "POST":
         serializer = MovieSerializer(data=request.data)
 
         if serializer.is_valid():
