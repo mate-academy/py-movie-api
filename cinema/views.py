@@ -14,14 +14,13 @@ def movie_list(request):
         serializer = MovieSerializer(movies, many=True)
         return Response(serializer.data, status=200)
 
-    if request.method == "POST":
-        serializer = MovieSerializer(data=request.data)
+    serializer = MovieSerializer(data=request.data)
 
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=201)
+    if serializer.is_valid():
+        serializer.save()
+        return Response(serializer.data, status=201)
 
-        return Response(serializer.errors, status=400)
+    return Response(serializer.errors, status=400)
 
 
 @api_view(["GET", "PUT", "DELETE"])
@@ -40,6 +39,5 @@ def movie_modification(request, pk):
             return Response(serializer.data, status=status.HTTP_200_OK)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-    elif request.method == "DELETE":
-        movie.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
+    movie.delete()
+    return Response(status=status.HTTP_204_NO_CONTENT)
