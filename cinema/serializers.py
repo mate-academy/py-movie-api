@@ -9,10 +9,10 @@ class MovieSerializer(serializers.Serializer):
     description = serializers.CharField(
         required=False, style={"type": "textarea"}
     )
-    duration = serializers.IntegerField(required=True)
+    duration = serializers.IntegerField(required=False)
 
     def create(self, validated_data):
-        Movie.objects.create(**validated_data)
+        return Movie.objects.create(**validated_data)
 
     def update(self, instance, validated_data):
         instance.title = validated_data.get("title", instance.title)
@@ -20,3 +20,4 @@ class MovieSerializer(serializers.Serializer):
             "description", instance.description
         )
         instance.duration = validated_data.get("duration", instance.duration)
+        return instance
