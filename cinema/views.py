@@ -4,10 +4,11 @@ from rest_framework import status
 from cinema.models import Movie
 from cinema.serializers import MovieSerializer
 from django.shortcuts import get_object_or_404
+from django.http import HttpRequest
 
 
 @api_view(["GET", "POST"])
-def movie_list(request):
+def movie_list(request: HttpRequest) -> Response:
     if request.method == "GET":
         movies = Movie.objects.all()
         serializer = MovieSerializer(movies, many=True)
@@ -15,14 +16,13 @@ def movie_list(request):
 
     if request.method == "POST":
         serializer = MovieSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
 
 
 @api_view(["GET", "PUT", "DELETE"])
-def movie_detail(request, pk):
+def movie_detail(request: HttpRequest, pk: int) -> Response:
     if request.method == "GET":
         movie = get_object_or_404(Movie, pk=pk)
         serializer = MovieSerializer(movie)
@@ -31,10 +31,9 @@ def movie_detail(request, pk):
     if request.method == "PUT":
         movie = get_object_or_404(Movie, pk=pk)
         serializer = MovieSerializer(movie, data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_202_ACCEPTED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data, status=status.HTTP_202_ACCEPTED)
 
     if request.method == "DELETE":
         movie = get_object_or_404(Movie, pk=pk)
