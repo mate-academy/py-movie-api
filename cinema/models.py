@@ -9,5 +9,5 @@ class Movie(models.Model):
     class Meta:
         verbose_name = "movies"
 
-    def __str__(self):
+    def __str__(self) -> str:
         return str(self.title)
