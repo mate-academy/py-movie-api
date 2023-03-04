@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Cinema Home</h1>
+  <p>Welcome to Best Cinema Ever!</p>
+    <li><strong>Movies:</strong> {{ num_movies }}</li>
+    <li><strong>Drivers:</strong> {{ num_drivers }}</li>
+    <li><strong>Manufacturers:</strong> {{ num_manufacturers }}</li>
+  </ul>
+
+  <p>You have visited this page
+      {{ num_visits }} time{{ num_visits|pluralize }}.
+  </p>
+
+{% endblock %}
