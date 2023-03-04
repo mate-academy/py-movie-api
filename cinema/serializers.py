@@ -11,10 +11,10 @@ class MovieSerializer(serializers.Serializer):
     description = serializers.CharField(required=True)
     duration = serializers.IntegerField(required=True)
 
-    def create(self, validated_data) -> Optional[Movie]:
+    def create(self, validated_data: dict) -> Optional[Movie]:
         return Movie.objects.create(**validated_data)
 
-    def update(self, instance, validated_data) -> None:
+    def update(self, instance, validated_data: Optional[dict]) -> None:
         instance.title = validated_data.get("title", instance.title)
         instance.description = validated_data.get(
             "description", instance.description

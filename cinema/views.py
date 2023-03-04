@@ -3,10 +3,26 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
 
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, render
 
 from cinema.models import Movie
 from cinema.serializers import MovieSerializer
+
+
+def index(request: HttpRequest) -> HttpResponse:
+    """View function for the home page of the site."""
+
+    num_movies = Movie.objects.count()
+
+    num_visits = request.session.get("num_visits", 0)
+    request.session["num_visits"] = num_visits + 1
+
+    context = {
+        "num_movies": num_movies,
+        "num_visits": num_visits + 1,
+    }
+
+    return render(request, "cinema/index.html", context=context)
 
 
 @api_view(["GET", "POST"])
@@ -18,11 +34,9 @@ def movie_list(request: HttpRequest) -> HttpResponse:
 
     if request.method == "POST":
         serializer = MovieSerializer(data=request.data)
-        if serializer.is_valid():
+        if serializer.is_valid(raise_exception=True):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
-
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 @api_view(["GET", "PUT", "DELETE"])
@@ -35,11 +49,9 @@ def movie_detail(request: HttpRequest, pk: int) -> HttpResponse:
 
     if request.method == "PUT":
         serializer = MovieSerializer(movie, data=request.data)
-        if serializer.is_valid():
+        if serializer.is_valid(raise_exception=True):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_200_OK)
-
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     if request.method == "DELETE":
         movie.delete()
