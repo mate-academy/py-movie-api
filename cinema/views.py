@@ -24,7 +24,7 @@ def movie_list(request):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(["GET", "PUT", "DELETE"])
-def get_movie(request, pk):
+def get_movie(request, pk: int):
     if request.method == "GET":
         movie = Movie.objects.get(id=pk)
         serializer = MovieSerializer(
