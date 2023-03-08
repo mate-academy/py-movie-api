@@ -1,6 +1,4 @@
 from rest_framework import serializers
-from django.db.models import QuerySet
-
 from cinema.models import Movie
 
 
@@ -10,7 +8,7 @@ class MovieSerializer(serializers.Serializer):
     description = serializers.CharField(required=True)
     duration = serializers.IntegerField(required=True)
 
-    def create(self, validated_data: dict) -> QuerySet:
+    def create(self, validated_data: dict) -> Movie:
         return Movie.objects.create(**validated_data)
 
     def update(self, instance: Movie, validated_data: dict) -> Movie:
