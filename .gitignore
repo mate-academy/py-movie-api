@@ -2,4 +2,4 @@
 .pyc
 *.sqlite
 *.db3
-venv/
+/venv/
