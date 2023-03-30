@@ -11,11 +11,11 @@ urlpatterns = [
     path(
         "movies/",
         movie_retrieve_create,
-        name="movie-list"
+        name="movie_retrieve_create"
     ),
     path(
         "movies/<int:pk>/",
         movie_get_update_delete,
-        name="movie-list"
+        name="movie_get_update_delete"
     ),
 ]
