@@ -26,7 +26,7 @@ def movie_list(request):
 
 
 @api_view(["GET", "PUT", "DELETE"])
-def movie_detailed(request, pk):
+def movie_detail(request, pk):
     """
     Retrieve, update or delete a movie.
     """
