@@ -4,7 +4,7 @@ from cinema.views import movie_list
 
 urlpatterns = [
     path(
-        'api/cinema/movies/',
+        "api/cinema/movies/",
         movie_list,
         name="movie-list"
     ),
