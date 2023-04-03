@@ -2,7 +2,6 @@ from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.generics import get_object_or_404
 from rest_framework.response import Response
-# from rest_framework.validators import
 
 from cinema.models import Movie
 from cinema.serializers import MovieSerializer
@@ -25,8 +24,8 @@ def movie_retrieve_create(request):
 
 @api_view(["GET", "PUT", "DELETE"])
 def movie_get_update_delete(request, pk):
-    if get_object_or_404(Movie, id=pk):
-        movie = Movie.objects.get(id=pk)
+    movie = get_object_or_404(Movie, id=pk)
+    if movie:
 
         if request.method == "PUT":
             serializer = MovieSerializer(movie, data=request.data)
@@ -35,10 +34,8 @@ def movie_get_update_delete(request, pk):
                 serializer.save()
 
                 return Response(serializer.data, status=status.HTTP_200_OK)
-            return Response(
-                serializer.errors,
-                status=status.HTTP_400_BAD_REQUEST
-            )
+            return Response(serializer.errors,
+                            status=status.HTTP_400_BAD_REQUEST)
 
         if request.method == "GET":
             serializer = MovieSerializer(movie)
@@ -46,6 +43,5 @@ def movie_get_update_delete(request, pk):
             return Response(serializer.data, status=status.HTTP_200_OK)
         if request.method == "DELETE":
             movie.delete()
-            movie.save()
 
             return Response(status=status.HTTP_204_NO_CONTENT)
