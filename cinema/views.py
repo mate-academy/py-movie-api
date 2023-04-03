@@ -21,34 +21,24 @@ def movie_list(request) -> Response:
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
-
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 @api_view(["GET", "PUT", "DELETE"])
 def movie_detail(request: HttpRequest, pk: int) -> Response:
+    movie = get_object_or_404(Movie, pk=pk)
+
     if request.method == "GET":
-        movie = get_object_or_404(Movie, pk=pk)
         serializer = MovieSerializer(movie)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
     elif request.method == "PUT":
-        try:
-            movie = get_object_or_404(Movie, pk=pk)
-            serializer = MovieSerializer(data=request.data)
-            if serializer.is_valid():
-                serializer.update(movie, serializer.data)
-                return Response(serializer.data, status=status.HTTP_200_OK)
-        except Http404:
-            if serializer.is_valid():
-                serializer.save()
-                return Response(
-                    serializer.data, status=status.HTTP_201_CREATED
-                )
-
+        serializer = MovieSerializer(movie, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_200_OK)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     elif request.method == "DELETE":
-        movie = get_object_or_404(Movie, pk=pk)
         movie.delete()
         return Response(status=status.HTTP_200_OK)
