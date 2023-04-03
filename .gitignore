@@ -2,3 +2,5 @@
 venv
 .sqlite3
 __pycache__
+.pyc
+/db.sqlite3
