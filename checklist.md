@@ -9,7 +9,7 @@ Make sure you don't push `.pyc`, `.idea` files.
 
 ## Code Style
 
-1. Make sure that your Response return status code:
+1. Make sure that your `Response` returns status code:
 
 Good example:
 
@@ -44,7 +44,7 @@ class Book(models.Model):
     description = models.TextField(max_length=255)
 ```
 
-3. Make sure that all your endpoint adds with `/`:
+3. Make sure that all your endpoints end with `/`:
 
 Good example:
 
