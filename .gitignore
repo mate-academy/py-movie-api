@@ -1,0 +1,6 @@
+/venv
+db.sqlite3
+.idea
+cinema_serviсe_db_data.json
+README.md
+**__pycache__
