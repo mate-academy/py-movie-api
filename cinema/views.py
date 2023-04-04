@@ -1,3 +1,6 @@
+from __future__ import annotations
+
+from django.core.handlers.wsgi import WSGIRequest
 from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.parsers import JSONParser
@@ -7,7 +10,8 @@ from cinema.serializers import MovieSerializer
 
 
 @csrf_exempt
-def movie_list(request):
+def movie_list(request: WSGIRequest) -> JsonResponse:
+    print(type(request))
     if request.method == 'GET':
         movies = Movie.objects.all()
         serializer = MovieSerializer(movies, many=True)
@@ -23,7 +27,10 @@ def movie_list(request):
 
 
 @csrf_exempt
-def movie_detail(request, pk):
+def movie_detail(
+        request: WSGIRequest,
+        pk: int
+) -> JsonResponse | HttpResponse:
     try:
         movie = Movie.objects.get(pk=pk)
     except Movie.DoesNotExist:
