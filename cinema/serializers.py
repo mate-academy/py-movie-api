@@ -9,14 +9,11 @@ class MovieSerializer(serializers.Serializer):
     description = serializers.CharField(required=True)
     duration = serializers.IntegerField(required=True)
 
-# в validated_data записуються всі поля з моделі Movie
     def create(self, validated_data):
         return Movie.objects.create(**validated_data)
 
     def update(self, instance, validated_data):
-        # екземпляр Movie
         instance.title = validated_data.get("title", instance.title)
-        # якщо не предали нового значення то по дефолту старе значення instance.title
         instance.description = validated_data.get(
             "description",
             instance.description
