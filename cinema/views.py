@@ -11,7 +11,6 @@ from cinema.serializers import MovieSerializer
 
 @csrf_exempt
 def movie_list(request: WSGIRequest) -> JsonResponse:
-    print(type(request))
     if request.method == 'GET':
         movies = Movie.objects.all()
         serializer = MovieSerializer(movies, many=True)
@@ -20,10 +19,9 @@ def movie_list(request: WSGIRequest) -> JsonResponse:
     elif request.method == 'POST':
         data = JSONParser().parse(request)
         serializer = MovieSerializer(data=data)
-        if serializer.is_valid():
-            serializer.save()
-            return JsonResponse(serializer.data, status=201)
-        return JsonResponse(serializer.errors, status=400)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return JsonResponse(serializer.data, status=201)
 
 
 @csrf_exempt
@@ -43,10 +41,9 @@ def movie_detail(
     elif request.method == 'PUT':
         data = JSONParser().parse(request)
         serializer = MovieSerializer(movie, data=data)
-        if serializer.is_valid():
-            serializer.save()
-            return JsonResponse(serializer.data)
-        return JsonResponse(serializer.errors, status=400)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return JsonResponse(serializer.data)
 
     elif request.method == 'DELETE':
         movie.delete()
