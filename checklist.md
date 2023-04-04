@@ -63,7 +63,7 @@ urlpatterns = [
 ```
 
 4. Make sure you catch an error in `@api_view` in case that object doesn't exist. 
-Use `get_object_or_404` instead of `try`/`except` for this purpose.
+Use `co` instead of `try`/`except` famor this purpose.
 
 ## Clean Code
 Add comments, prints, and functions to check your solution when you write your code. 
