@@ -23,5 +23,6 @@ class MovieSerializer(serializers.Serializer):
             "description",
             instance.description
         )
+        instance.duration = serializers.IntegerField()
         instance.save()
         return instance
