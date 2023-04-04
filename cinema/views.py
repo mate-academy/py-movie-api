@@ -24,7 +24,7 @@ def movie_list(request):
 
 
 @api_view(["GET", "PUT", "DELETE"])
-def get_or_change_movie(request, pk):
+def movie_details(request, pk):
     movie = get_object_or_404(Movie, pk=pk)
 
     if request.method == "GET":

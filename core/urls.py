@@ -16,10 +16,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
-from cinema.views import get_or_change_movie
+from cinema.views import movie_details
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("api/cinema/", include("cinema.urls", namespace="cinema")),
-    path("movies/<int:pk>/", get_or_change_movie, name="get_or_change_movie"),
 ]
