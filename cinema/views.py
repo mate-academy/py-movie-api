@@ -9,12 +9,12 @@ from cinema.serializer import MovieSerializer
 
 
 @api_view(["GET", "POST"])
-def cinema_list(request):
+def get_movies(request: HttpRequest) -> HttpResponse:
     if request.method == "GET":
         movies = Movie.objects.all()
         serializer = MovieSerializer(movies, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
-    if request.method == "PUT":
+    if request.method == "POST":
         serializer = MovieSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
@@ -27,14 +27,16 @@ def cinema_list(request):
 
 
 @api_view(["GET", "PUT", "DELETE"])
-def cinema_detail(request: HttpRequest, pk: int) -> HttpResponse:
+def retrieve_cinema(
+        request: HttpRequest, pk: int
+) -> HttpResponse:
     movie = get_object_or_404(Movie, pk=pk)
     if request.method == "GET":
         serializer = MovieSerializer(movie)
         return Response(
             serializer.data, status=status.HTTP_200_OK
         )
-    elif request.method == "POST":
+    elif request.method == "PUT":
         serializer = MovieSerializer(
             movie, data=request.data
         )
@@ -46,6 +48,6 @@ def cinema_detail(request: HttpRequest, pk: int) -> HttpResponse:
         return Response(
             serializer.errors, status=status.HTTP_400_BAD_REQUEST
         )
-    elif request.method == "DELETE":
+    if request.method == "DELETE":
         movie.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
