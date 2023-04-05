@@ -1,7 +1,10 @@
-/venv
+.idea/
+.vscode/
+*.iml
+.env
+.DS_Store
+venv/
+.pytest_cache/
+**__pycache__/
+*.pyc
 db.sqlite3
-.idea
-cinema_serviсe_db_data.json
-README.md
-**__pycache__
-.pyc
