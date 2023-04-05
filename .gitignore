@@ -1,1 +1,4 @@
 /cinema/migrations/
+.idea
+venv
+**__pycache__
