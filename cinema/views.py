@@ -9,15 +9,12 @@ from cinema.serializers import MovieSerializer
 
 @api_view(["GET", "POST"])
 def movie_list(request):
-    """
-    List all movies, or create a new movie.
-    """
     if request.method == "GET":
         movies = Movie.objects.all()
         serializer = MovieSerializer(movies, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
-    elif request.method == "POST":
+    if request.method == "POST":
         serializer = MovieSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
@@ -27,9 +24,6 @@ def movie_list(request):
 
 @api_view(["GET", "PUT", "DELETE"])
 def movie_detail(request, pk):
-    """
-    Retrieve, update or delete a movie.
-    """
     movie = get_object_or_404(Movie, pk=pk)
 
     if request.method == "GET":
