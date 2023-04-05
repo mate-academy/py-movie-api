@@ -50,4 +50,4 @@ def movie_detail_view(
         )
     if request.method == "DELETE":
         movie.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
+        return Response(status=status.HTTP_200_OK)
