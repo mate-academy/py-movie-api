@@ -9,7 +9,7 @@ from cinema.serializer import MovieSerializer
 
 
 @api_view(["GET", "POST"])
-def get_movies(request: HttpRequest) -> HttpResponse:
+def movie_list_view(request: HttpRequest) -> HttpResponse:
     if request.method == "GET":
         movies = Movie.objects.all()
         serializer = MovieSerializer(movies, many=True)
@@ -27,7 +27,7 @@ def get_movies(request: HttpRequest) -> HttpResponse:
 
 
 @api_view(["GET", "PUT", "DELETE"])
-def retrieve_cinema(
+def movie_detail_view(
         request: HttpRequest, pk: int
 ) -> HttpResponse:
     movie = get_object_or_404(Movie, pk=pk)
@@ -43,7 +43,7 @@ def retrieve_cinema(
         if serializer.is_valid():
             serializer.save()
             return Response(
-                serializer.data, status=status.HTTP_201_CREATED
+                serializer.data, status=status.HTTP_204_NO_CONTENT
             )
         return Response(
             serializer.errors, status=status.HTTP_400_BAD_REQUEST

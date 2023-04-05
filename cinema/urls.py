@@ -1,9 +1,9 @@
 from django.urls import path
 
-from .views import retrieve_cinema, get_movies
+from .views import movie_list_view, movie_detail_view
 
 urlpatterns = [
-    path("movies/", get_movies, name="movies-list"),
-    path("movies/<int:pk>/", retrieve_cinema, name="movie-detail"),
+    path("movies/", movie_list_view, name="movies-list"),
+    path("movies/<int:pk>/", movie_detail_view, name="movie-detail"),
 ]
 app_name = "cinema"
