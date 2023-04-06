@@ -7,5 +7,4 @@ urlpatterns = [
     path("movies/<int:pk>/", movie_details, name="movie_get_update_delete"),
 ]
 
-
 app_name = "cinema"
