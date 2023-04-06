@@ -1,10 +1,10 @@
 # Check Your Code Against the Following Points
 
-## Don't forget to add `.gitignore` file BEFORE pushing
+## Don"t forget to add `.gitignore` file BEFORE pushing
 
-Make sure you don't push DB files (files with `.sqlite`, `.db3`, etc. extension).
+Make sure you don"t push DB files (files with `.sqlite`, `.db3`, etc. extension).
 
-Make sure you don't push `.pyc`, `.idea` files.
+Make sure you don"t push `.pyc`, `.idea` files.
 
 
 ## Code Style
@@ -27,7 +27,7 @@ if request.method == "GET":
     return Response(serializer.data)
 ```
 
-2. If you specify `max_length` then it's more reasonable 
+2. If you specify `max_length` then it"s more reasonable 
 to use `CharField` instead of `TextField`:
 
 Good example:
@@ -62,9 +62,9 @@ urlpatterns = [
 ]
 ```
 
-4. Make sure you catch an error in `@api_view` in case that object doesn't exist. 
+4. Make sure you catch an error in `@api_view` in case that object doesn"t exist. 
 Use `get_object_or_404` instead of `try`/`except` for this purpose.
 
 ## Clean Code
 Add comments, prints, and functions to check your solution when you write your code. 
-Don't forget to delete them when you are ready to commit and push your code.
+Don"t forget to delete them when you are ready to commit and push your code.
