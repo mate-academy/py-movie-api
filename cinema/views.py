@@ -30,7 +30,7 @@ def movie_detail(request, pk):
 
     if request.method == "GET":
         serializer = MovieSerializer(movie)
-        return Response(serializer.data)
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
     elif request.method == "PUT":
         serializer = MovieSerializer(movie, data=request.data)
@@ -42,4 +42,3 @@ def movie_detail(request, pk):
     elif request.method == "DELETE":
         movie.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
-
