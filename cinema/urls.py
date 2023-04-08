@@ -5,6 +5,6 @@ from cinema.views import movies, change_movie
 app_name = "cinema"
 
 urlpatterns = [
-    path("cinema/movies/", movies, name="movie-list"),
-    path("cinema/movies/<pk>/", change_movie, name="change-movie"),
+    path("movies/", movies, name="movie-list"),
+    path("movies/<pk>/", change_movie, name="change-movie"),
 ]
