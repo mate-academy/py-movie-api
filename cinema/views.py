@@ -6,19 +6,14 @@ from rest_framework import status
 from django.shortcuts import get_object_or_404
 
 
-@api_view(["GET", "POST", "PUT", "DELETE"])
-def movie_list(request, pk=None):
-    if request.method == "GET" and pk:
-        movie = get_object_or_404(Movie, pk)
-        serializer = MovieSerializer(movie)
-        return Response(serializer.data, status=status.HTTP_200_OK)
-
-    elif request.method == "GET":
+@api_view(["GET", "POST"])
+def movie_list(request):
+    if request.method == "GET":
         movies = Movie.objects.all()
         serializer = MovieSerializer(movies, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
-    elif request.method == "POST":
+    if request.method == "POST":
         serializer = MovieSerializer(data=request.data)
 
         if serializer.is_valid():
@@ -27,7 +22,15 @@ def movie_list(request, pk=None):
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-    elif request.method == "PUT":
+
+@api_view(["GET", "PUT", "DELETE"])
+def movie_detail(request, pk):
+    if request.method == "GET":
+        movie = get_object_or_404(Movie, pk)
+        serializer = MovieSerializer(movie)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+    if request.method == "PUT":
         movie = get_object_or_404(Movie, pk)
         serializer = MovieSerializer(movie, data=request.data)
 
@@ -37,10 +40,7 @@ def movie_list(request, pk=None):
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-    elif request.method == "DELETE":
+    if request.method == "DELETE":
         movie = get_object_or_404(Movie, pk)
         movie.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
-
-
-
