@@ -28,7 +28,7 @@ def movie_detail(request, pk: int):
     movie = get_object_or_404(Movie, pk=pk)
 
     if request.method == 'GET':
-        serializer = MovieSerializer(movie, data=request.data)
+        serializer = MovieSerializer(movie)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
     if request.method == 'PUT':
