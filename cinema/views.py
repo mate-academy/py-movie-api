@@ -10,7 +10,7 @@ from cinema.serializers import MovieSerializer
 
 
 @api_view(["GET", "POST"])
-def movies(request: Request) -> Response:
+def movie_list(request: Request) -> Response:
     if request.method == "GET":
         movie = Movie.objects.all()
         serializer = MovieSerializer(movie, many=True)
@@ -25,7 +25,7 @@ def movies(request: Request) -> Response:
 
 
 @api_view(["GET", "PUT", "DELETE"])
-def change_movie(request: Request, pk: int) -> Response:
+def movie_detail(request: Request, pk: int) -> Response:
     movie = get_object_or_404(Movie, pk=pk)
     if request.method == "GET":
         serializer = MovieSerializer(movie)
@@ -34,8 +34,8 @@ def change_movie(request: Request, pk: int) -> Response:
         serializer = MovieSerializer(movie, data=request.data)
         if serializer.is_valid():
             serializer.save()
-            return Response(serializer.data, status.HTTP_202_ACCEPTED)
+            return Response(serializer.data, status.HTTP_200_OK)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     if request.method == "DELETE":
         movie.delete()
-        return Response({"message": "Object deleted successfully"})
+        return Response(status=status.HTTP_204_NO_CONTENT)
