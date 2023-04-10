@@ -3,12 +3,12 @@ from cinema.views import MovieListCreateView, MovieRetrieveUpdateDestroyView
 
 urlpatterns = [
     path(
-        "api/cinema/movies/",
+        "movies/",
         MovieListCreateView.as_view(),
         name="movie-list-create"
     ),
     path(
-        "api/cinema/movies/<int:pk>/",
+        "movies/<int:pk>/",
         MovieRetrieveUpdateDestroyView.as_view(),
         name="movie-retrieve-update-destroy"
     ),
