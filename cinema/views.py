@@ -8,7 +8,8 @@ from .serializers import MovieSerializer
 
 
 @api_view(["GET", "POST"])
-def movies_list(request):
+def movie_list(request):
+
     if request.method == "GET":
         movies = Movie.objects.all()
         serializer = MovieSerializer(movies, many=True)
