@@ -7,7 +7,7 @@ class Movie(models.Model):
     duration = models.IntegerField()
 
     class Meta:
-        ordering = ["title",]
+        ordering = ["title"]
 
     def __str__(self):
         return f"{self.title} time -> {self.duration} min."
