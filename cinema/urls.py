@@ -6,8 +6,8 @@ from .views import (
 )
 
 urlpatterns = [
-    path("home/", movie_list, name="movies"),
-    path("home/<int:pk>/", movie_datail, name="movie"),
+    path("movies/", movie_list, name="movie-list"),
+    path("movies/<int:pk>/", movie_datail, name="movie-detail")
 ]
 
 app_name = "cinema"
