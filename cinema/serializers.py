@@ -5,12 +5,12 @@ from .models import Movie
 
 class MovieSerializer(serializers.Serializer):
     id = serializers.IntegerField(read_only=True)
-    title = serializers.CharField(required=True)
-    description = serializers.CharField(required=True)
-    duration = serializers.IntegerField(required=True)
+    title = serializers.CharField(max_length=63)
+    description = serializers.CharField()
+    duration = serializers.IntegerField()
 
     def create(self, validated_data):
-        return Movie.objects.all()
+        return Movie.objects.create(**validated_data)
 
     def update(self, instance, validated_data):
         instance.title = validated_data.get("title", instance.title)
