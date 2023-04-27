@@ -210,3 +210,5 @@ ENV/
 
 # mkdocs documentation
 /site
+
+db.sqlite3
