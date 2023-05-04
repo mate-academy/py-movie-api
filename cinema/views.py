@@ -19,7 +19,7 @@ def movie_list(request):
         serializer.is_valid(raise_exception=True)
         serializer.save()
         return Response(
-            serializer.errors,
+            serializer.data,
             status=status.HTTP_201_CREATED
         )
 
