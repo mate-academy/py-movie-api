@@ -10,4 +10,4 @@ class Movie(models.Model):
         ordering = ["title"]
     
     def __str__(self):
-        return str(self.title)
+        return (self.title)
