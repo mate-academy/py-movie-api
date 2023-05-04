@@ -10,10 +10,11 @@ class MovieSerializer(serializers.Serializer):
 
     def create(self, validated_data):
         return Movie.create(**validated_data)
-    
+
     def update(self, instance, validated_data):
         instance.title = validated_data.get("title", instance.title)
-        instance.description = validated_data.get("description", instance.description)
+        instance.description = validated_data.get(
+            "description", instance.description)
         instance.duration = validated_data.get("duration", instance.duration)
         instance.save()
         return instance
