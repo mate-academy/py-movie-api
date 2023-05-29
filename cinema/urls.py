@@ -5,3 +5,5 @@ urlpatterns = [
     path('movies/', MovieList.as_view(), name='movie_list'),
     path('movies/<int:pk>/', MovieDetail.as_view(), name='movie_detail'),
 ]
+
+app_name = "cinema"
