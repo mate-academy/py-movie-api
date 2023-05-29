@@ -19,7 +19,7 @@ In this task, you should implement an API that provides CRUD operations for the 
 
 Use the following command to load prepared data from fixture to test and debug your code:
 
-  `python manage.py loaddata cinema_serviсe_db_data.json`
+  `python manage.py loaddata cinema_service_db_data.json`
 
 
 ### Note: Check your code using this [checklist](checklist.md) before pushing your solution.
