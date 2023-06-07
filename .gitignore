@@ -1,3 +1,5 @@
 venv
 db.sqlite3
-.idea/*
+.idea
+**/__pycache__/
+.pyc
