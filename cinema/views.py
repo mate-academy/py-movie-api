@@ -20,7 +20,8 @@ def cinema_list(request):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
 
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        # There is no need in returning response with errors since (raise_exception=True) do this job !!!
+        # return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 @api_view(["GET", "PUT", "DELETE", "PATCH"])
@@ -41,7 +42,7 @@ def cinema_detail(request, pk):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
 
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        # return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     elif request.method == "PATCH":
         serializer = MovieSerializer(movie, data=request.data, partial=True)
@@ -49,7 +50,7 @@ def cinema_detail(request, pk):
             serializer.save()
             return Response(serializer.data)
 
-        return Response(serializer.errors, status=400)
+        # return Response(serializer.errors, status=400)
 
     elif request.method == "DELETE":
         movie.delete()
