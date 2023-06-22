@@ -16,7 +16,7 @@ def cinema_list(request):
     if request.method == "POST":
         serializer = MovieSerializer(data=request.data)
 
-        if serializer.is_valid():
+        if serializer.is_valid(raise_exception=True):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
 
@@ -37,7 +37,7 @@ def cinema_detail(request, pk):
     if request.method == "PUT":
         serializer = MovieSerializer(movie, data=request.data)
 
-        if serializer.is_valid():
+        if serializer.is_valid(raise_exception=True):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
 
@@ -45,7 +45,7 @@ def cinema_detail(request, pk):
 
     elif request.method == "PATCH":
         serializer = MovieSerializer(movie, data=request.data, partial=True)
-        if serializer.is_valid():
+        if serializer.is_valid(raise_exception=True):
             serializer.save()
             return Response(serializer.data)
 
