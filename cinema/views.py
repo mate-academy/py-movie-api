@@ -23,7 +23,7 @@ def movie_list(request):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-@api_view(['GET', 'PUT', 'DELETE'])
+@api_view(["GET", "PUT", "DELETE"])
 def movie_detail(request, pk):
     try:
         movie = Movie.objects.get(pk=pk)
