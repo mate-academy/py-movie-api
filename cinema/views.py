@@ -17,10 +17,7 @@ def movie_list(request):
 
         serializer.is_valid(raise_exception=True)
         serializer.save()
-        return Response(
-            data=serializer.data,
-            status=status.HTTP_201_CREATED
-        )
+        return Response(data=serializer.data, status=status.HTTP_201_CREATED)
 
 
 @api_view(["GET", "PUT", "DELETE"])
@@ -35,10 +32,7 @@ def movie_object(request, pk):
 
         serializer.is_valid(raise_exception=True)
         serializer.save()
-        return Response(
-            data=serializer.data,
-            status=status.HTTP_200_OK
-        )
+        return Response(data=serializer.data, status=status.HTTP_200_OK)
 
     if request.method == "DELETE":
         movie.delete()
