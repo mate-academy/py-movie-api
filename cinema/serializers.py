@@ -7,7 +7,6 @@ class MovieSerializer(serializers.Serializer):
     id = serializers.IntegerField(read_only=True)
     title = serializers.CharField(max_length=255, required=True)
     description = serializers.CharField(
-        style={"base_template": "textarea.html"},
         allow_blank=True,
         allow_null=True,
         required=False,
