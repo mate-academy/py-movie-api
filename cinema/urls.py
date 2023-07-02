@@ -3,7 +3,7 @@ from django.urls import path
 
 urlpatterns = [
     path("movies/", movies_list, name="movies-list"),
-    path("movies/<pk>/", movie_detail, name="movie-detail"),
+    path("movies/<pk:int>/", movie_detail, name="movie-detail"),
 ]
 
 app_name = "movies"
