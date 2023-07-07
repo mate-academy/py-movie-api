@@ -1,3 +1,4 @@
+from django.shortcuts import get_object_or_404
 from rest_framework import serializers, status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
@@ -14,7 +15,7 @@ def movie_list(request):
         return Response(serializer.data, status=status.HTTP_200_OK)
     if request.method == "POST":
         serializer = MovieSerializer(data=request.data)
-        if serializer.is_valid():
+        if serializer.is_valid(raise_exception=True):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
@@ -23,13 +24,13 @@ def movie_list(request):
 @api_view(["GET", "PUT"])
 def movie_edit(request, pk, *args, **kwargs):
     if request.method == "GET":
-        movie = Movie.objects.get(pk=pk)
+        movie = get_object_or_404(Movie, pk=pk)
         serializer = MovieSerializer(movie)
         return Response(serializer.data, status=status.HTTP_200_OK)
     if request.method == "PUT":
-        movie = Movie.objects.get(pk=pk)
+        movie = get_object_or_404(Movie, pk=pk)
         serializer = MovieSerializer(movie, data=request.data)
-        if serializer.is_valid:
+        if serializer.is_valid(raise_exception=True):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
