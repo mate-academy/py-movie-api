@@ -6,8 +6,5 @@ class Movie(models.Model):
     description = models.TextField()
     duration = models.PositiveIntegerField()
 
-    class Meta:
-        verbose_name_plural = "movies"
-
     def __str__(self):
         return str(self.title)
