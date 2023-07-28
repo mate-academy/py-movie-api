@@ -1,15 +1,12 @@
-from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404
 from rest_framework import status
 from rest_framework.decorators import api_view
-from rest_framework.parsers import JSONParser
 from rest_framework.response import Response
 
 from cinema.models import Movie
 from cinema.serializers import MovieSerializers
 
 
-# Create your views here.
 @api_view(["GET", "POST"])
 def movie_list(request):
     if request.method == "GET":
@@ -21,26 +18,18 @@ def movie_list(request):
     if request.method == "POST":
         serializer = MovieSerializers(data=request.data)
 
-        if serializer.is_valid(raise_exception=True):
-            serializer.save()
-
-            return Response(
-                serializer.data,
-                status=status.HTTP_201_CREATED
-            )
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
 
         return Response(
-            serializer.errors,
-            status=status.HTTP_400_BAD_REQUEST
+            serializer.data,
+            status=status.HTTP_201_CREATED
         )
 
 
 @api_view(["GET", "PUT", "DELETE"])
 def movie_detail(request, pk):
-    try:
-        movie = Movie.objects.get(id=pk)
-    except Movie.DoesNotExist:
-        return HttpResponse(status=404)
+    movie = get_object_or_404(Movie, pk=pk)
 
     if request.method == "GET":
         serializer = MovieSerializers(movie)
@@ -52,16 +41,11 @@ def movie_detail(request, pk):
     elif request.method == "PUT":
         serializer = MovieSerializers(movie, data=request.data)
 
-        if serializer.is_valid(raise_exception=True):
-            serializer.save()
-            return Response(
-                serializer.data,
-                status=status.HTTP_201_CREATED
-            )
-
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
         return Response(
-            serializer.errors,
-            status=status.HTTP_400_BAD_REQUEST
+            serializer.data,
+            status=status.HTTP_201_CREATED
         )
 
     elif request.method == "DELETE":
