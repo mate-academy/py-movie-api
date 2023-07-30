@@ -37,7 +37,5 @@ def movie_detail(request, pk):
 
 
     elif request.method == "DELETE":
-        serializer = MovieSerializer(movie)
-        serializer.is_valid(raise_exception=True)
         movie.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
