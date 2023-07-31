@@ -25,10 +25,7 @@ def movie_list(request):
 
 @api_view(["GET", "PUT", "DELETE"])
 def movie_detail(request, movie_id):
-    try:
-        movie = Movie.objects.get(pk=movie_id)
-    except Movie.DoesNotExist:
-        return Response(status=status.HTTP_400_BAD_REQUEST)
+    movie = Movie.objects.get_or_404(pk=movie_id)
 
     if request.method == "GET":
         serializer = MovieSerializer(movie)
