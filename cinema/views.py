@@ -16,20 +16,20 @@ from cinema.serializers import MovieSerializer
 )
 def movie_list(request):
     if request.method == "GET":
-        tutorials = Movie.objects.all()
-        serializer = MovieSerializer(tutorials, many=True)
+        movies = Movie.objects.all()
+        serializer = MovieSerializer(movies, many=True)
         return JsonResponse(serializer.data, safe=False)
 
     elif request.method == "POST":
-        tutorial_data = JSONParser().parse(request)
-        tutorial_serializer = MovieSerializer(data=tutorial_data)
-        if tutorial_serializer.is_valid():
-            tutorial_serializer.save()
+        movie_data = JSONParser().parse(request)
+        movie_serializer = MovieSerializer(data=movie_data)
+        if movie_serializer.is_valid():
+            movie_serializer.save()
             return JsonResponse(
-                tutorial_serializer.data, status=status.HTTP_201_CREATED
+                movie_serializer.data, status=status.HTTP_201_CREATED
             )
         return JsonResponse(
-            tutorial_serializer.errors, status=status.HTTP_400_BAD_REQUEST
+            movie_serializer.errors, status=status.HTTP_400_BAD_REQUEST
         )
 
 
@@ -47,8 +47,8 @@ def movie_detail(request, pk):
         return JsonResponse(serializer.data)
 
     elif request.method == "PUT":
-        tutorial_data = JSONParser().parse(request)
-        serializer = MovieSerializer(movie, data=tutorial_data)
+        movie_data = JSONParser().parse(request)
+        serializer = MovieSerializer(movie, data=movie_data)
         if serializer.is_valid():
             serializer.save()
             return JsonResponse(serializer.data)
