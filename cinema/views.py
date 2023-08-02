@@ -1,4 +1,5 @@
 from django.http import JsonResponse
+from django.shortcuts import get_object_or_404
 from rest_framework import status
 from rest_framework.decorators import api_view
 
@@ -21,26 +22,19 @@ def movie_list(request):
         return JsonResponse(serializer.data, safe=False)
 
     elif request.method == "POST":
-        movie_data = JSONParser().parse(request)
+        movie_data = request.data
         movie_serializer = MovieSerializer(data=movie_data)
-        if movie_serializer.is_valid():
-            movie_serializer.save()
-            return JsonResponse(
-                movie_serializer.data, status=status.HTTP_201_CREATED
-            )
+        movie_serializer.is_valid(raise_exception=True)
+        movie_serializer.save()
         return JsonResponse(
-            movie_serializer.errors, status=status.HTTP_400_BAD_REQUEST
-        )
+            movie_serializer.data, status=status.HTTP_201_CREATED
+            )
 
 
 @api_view(["GET", "PUT", "DELETE"])
 def movie_detail(request, pk):
-    try:
-        movie = Movie.objects.get(pk=pk)
-    except Movie.DoesNotExist:
-        return JsonResponse(
-            {"message": "The movie does not exist"}, status=status.HTTP_404_NOT_FOUND
-        )
+
+    movie = get_object_or_404(Movie, pk=pk)
 
     if request.method == "GET":
         serializer = MovieSerializer(movie)
@@ -49,10 +43,10 @@ def movie_detail(request, pk):
     elif request.method == "PUT":
         movie_data = JSONParser().parse(request)
         serializer = MovieSerializer(movie, data=movie_data)
-        if serializer.is_valid():
-            serializer.save()
-            return JsonResponse(serializer.data)
-        return JsonResponse(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return JsonResponse(serializer.data)
+
 
     elif request.method == "DELETE":
         movie.delete()
