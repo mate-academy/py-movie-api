@@ -32,10 +32,9 @@ def movie_detail(request, movie_id):
 
     if request.method == "PUT":
         movie_serializer = MovieSerializer(instance=movie, data=request.data)
-        if movie_serializer.is_valid():
-            movie_serializer.save()
-            return Response(movie_serializer.data, status=status.HTTP_200_OK)
-        return Response(movie_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        serializer.is_valid(raise_exception=True)
+        movie_serializer.save()
+        return Response(movie_serializer.data, status=status.HTTP_200_OK)
 
     if request.method == "DELETE":
         movie.delete()
