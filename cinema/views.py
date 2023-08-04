@@ -21,7 +21,6 @@ def movie_list(request):
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
 
-
 @api_view(["GET", "PUT", "DELETE"])
 def movie_detail(request, movie_id):
     movie = get_object_or_404(Movie, pk=movie_id)
@@ -32,7 +31,7 @@ def movie_detail(request, movie_id):
 
     if request.method == "PUT":
         movie_serializer = MovieSerializer(instance=movie, data=request.data)
-        serializer.is_valid(raise_exception=True)
+        movie_serializer.is_valid(raise_exception=True)
         movie_serializer.save()
         return Response(movie_serializer.data, status=status.HTTP_200_OK)
 
