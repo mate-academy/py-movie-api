@@ -3,6 +3,7 @@
 *.egg*
 /dist/
 /.idea
+env
 /docs/_build/
 /node_modules/
 build/
