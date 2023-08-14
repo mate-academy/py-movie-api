@@ -1,10 +1,12 @@
 from django.urls import path
-from cinema.views import movie_list
+from rest_framework.urlpatterns import format_suffix_patterns
+from cinema.views import movie_list, movie_detail
 
 urlpatterns = [
     path("movies/", movie_list, name="movie-list"),
-    # path
-
+    path("movies/<int:pk>/", movie_detail, name="movie-detail"),
 ]
+
+urlpatterns = format_suffix_patterns(urlpatterns)
 
 app_name = "cinema"
