@@ -1,0 +1,11 @@
+asgiref==3.6.0
+Django==4.1.7
+djangorestframework==3.14.0
+flake8==6.0.0
+flake8-quotes==3.3.2
+flake8-variables-names==0.0.5
+mccabe==0.7.0
+pycodestyle==2.10.0
+pyflakes==3.0.1
+pytz==2022.7.1
+sqlparse==0.4.3
