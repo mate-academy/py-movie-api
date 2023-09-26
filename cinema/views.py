@@ -44,4 +44,3 @@ def movie_detail(request: HttpRequest, pk):
     if request.method == "DELETE":
         movie.delete()
         return Response(status=status.HTTP_200_OK)
-
