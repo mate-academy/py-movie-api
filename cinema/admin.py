@@ -7,6 +7,7 @@ from .models import Movie
 admin.unregister(Group)
 
 
+@admin.register(Movie)
 class MovieAdmin(admin.ModelAdmin):
     list_display = [
         "title",
