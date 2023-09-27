@@ -1,4 +1,5 @@
 from django.http import JsonResponse, HttpResponse
+from django.shortcuts import get_object_or_404
 from rest_framework.decorators import api_view
 from rest_framework.parsers import JSONParser
 
@@ -17,18 +18,14 @@ def movie_list(request):
     if request.method == "POST":
         data = JSONParser().parse(request)
         serializer = MovieSerializer(data=data)
-        if serializer.is_valid():
-            serializer.save()
-            return JsonResponse(serializer.data, status=201)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
         return JsonResponse(serializer.errors, status=400)
 
 
 @api_view(["GET", "PUT", "DELETE"])
 def movie_detail(request, pk):
-    try:
-        movie = Movie.objects.get(pk=pk)
-    except Movie.DoesNotExist:
-        return HttpResponse(status=404)
+    movie = get_object_or_404(Movie, pk=pk)
 
     if request.method == "GET":
         serializer = MovieSerializer(movie)
@@ -37,11 +34,9 @@ def movie_detail(request, pk):
     if request.method == "PUT":
         data = JSONParser().parse(request)
         serializer = MovieSerializer(data=data)
-        if serializer.is_valid():
-            serializer.save()
-            return JsonResponse(serializer.data)
-        else:
-            return JsonResponse(serializer.errors, status=400)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return JsonResponse(serializer.data)
 
     if request.method == "DELETE":
         movie.delete()
