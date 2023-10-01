@@ -17,7 +17,8 @@ class MovieSerializer(serializers.Serializer):
 
     def update(self, instance, validated_data):
         """
-        Update and return an existing `Movie` instance, given the validated data.
+        Update and return an existing `Movie` instance, given the validated
+        data.
         """
         instance.title = validated_data.get(
             "title",
