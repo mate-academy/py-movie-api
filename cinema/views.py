@@ -35,6 +35,7 @@ def movie_manager(request, pk):
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_202_ACCEPTED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     if request.method == "DELETE":
         movie.delete()
