@@ -15,15 +15,11 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.urls import path
-from cinema.views import index, movie
+from cinema.views import movie
 
 urlpatterns = [
-    path("", index, name="index"),
-    path("api/cinema/movies/", movie, name="get"),
-    path("api/cinema/movies/<int:pk>/", movie, name="get_one"),
-    path("api/cinema/movies/", movie, name="post"),
-    path("api/cinema/movies/<int:pk>/", movie, name="put"),
-    path("api/cinema/movies/<int:pk>/", movie, name="delete"),
+    path("api/cinema/movies/", movie, name="movies"),
+    path("api/cinema/movies/<int:pk>/", movie, name="single_movie"),
 ]
 
 app_name = "cinema"
