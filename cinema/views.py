@@ -1,3 +1,4 @@
+from django.shortcuts import get_object_or_404
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
@@ -24,7 +25,7 @@ def movie_list(request):
 
 @api_view(["GET", "PUT", "DELETE"])
 def movie_detail(request, pk: int):
-    movie = Movie.objects.get(pk=pk)
+    movie = get_object_or_404(Movie, id=pk)
 
     if request.method == "GET":
         serializer = MovieSerializer(movie)
@@ -32,14 +33,11 @@ def movie_detail(request, pk: int):
         return Response(serializer.data, status=status.HTTP_200_OK)
 
     if request.method == "PUT":
-        serializer = MovieSerializer(data=request.data)
-        movie.title = serializer.validated_data["title"]
-        movie.description = serializer.validated_data["description"]
-        movie.duration = serializer.validated_data["duration"]
-        serializer.is_valid(raise_exception=True)
-        serializer.save()
-
-        return Response(serializer.data, status=status.HTTP_200_OK)
+        serializer = MovieSerializer(movie, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     if request.method == "DELETE":
         movie.delete()
