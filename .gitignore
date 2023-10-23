@@ -9,3 +9,4 @@ media/
 *.iml
 .env
 .env.local
+.pyc
