@@ -26,6 +26,12 @@ class MovieCRUDView(APIView):
         return Response(serializer.data, status.HTTP_200_OK)
 
     def post(self, request, *args, **kwargs):
+        title = request.data.get("title")
+        if self.model.objects.filter(title=title).exists():
+            return Response(
+                {"error": f"Object with title '{title}' is already exists"},
+                status=status.HTTP_400_BAD_REQUEST
+            )
         serializer = self.serializer_class(data=request.data)
         if serializer.is_valid():
             serializer.save()
@@ -34,6 +40,16 @@ class MovieCRUDView(APIView):
 
     def put(self, request, *args, **kwargs):
         movie = self.get_object(kwargs.get("pk"))
+        new_title = request.data.get("title")
+        if not new_title == movie.title:
+            if self.model.objects.filter(title=new_title).exists():
+                return Response(
+                    {
+                        "error": (f"Object with title '{new_title}' "
+                                  f"is already exists")
+                    },
+                    status=status.HTTP_400_BAD_REQUEST
+                )
         serializer = self.serializer_class(movie, data=request.data)
         if serializer.is_valid():
             serializer.save()
