@@ -9,6 +9,15 @@ class MovieSerializer(serializers.Serializer):
     description = serializers.CharField(required=False, allow_blank=True)
     duration = serializers.IntegerField()
 
+    def validate_title(self, value):
+        old_title = None
+        if self.instance is not None:
+            old_title = self.instance.title
+        if value != old_title and Movie.objects.filter(title=value).exists():
+            raise serializers.ValidationError(
+                f"The movie with title '{value}' is already exists"
+            )
+
     def create(self, validated_data):
         return Movie.objects.create(**validated_data)
 
