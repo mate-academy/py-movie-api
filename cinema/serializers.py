@@ -11,7 +11,7 @@ class MovieSerializer(serializers.Serializer):
 
     def validate_title(self, value):
         old_title = None
-        if self.instance is not None:
+        if self.instance:
             old_title = self.instance.title
         if value != old_title and Movie.objects.filter(title=value).exists():
             raise serializers.ValidationError(

@@ -12,8 +12,7 @@ class MovieCRUDView(APIView):
     serializer_class = MovieSerializer
 
     def get_object(self, pk: int):
-        instance = get_object_or_404(self.model, pk=pk)
-        return instance
+        return get_object_or_404(self.model, pk=pk)
 
     def get(self, request, *args, **kwargs):
         pk = kwargs.get("pk")
@@ -27,16 +26,16 @@ class MovieCRUDView(APIView):
 
     def post(self, request, *args, **kwargs):
         serializer = self.serializer_class(data=request.data)
-        if serializer.is_valid(raise_exception=True):
-            serializer.save()
-            return Response(serializer.data, status.HTTP_201_CREATED)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data, status.HTTP_201_CREATED)
 
     def put(self, request, *args, **kwargs):
         movie = self.get_object(kwargs.get("pk"))
         serializer = self.serializer_class(movie, data=request.data)
-        if serializer.is_valid(raise_exception=True):
-            serializer.save()
-            return Response(serializer.data, status.HTTP_200_OK)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data, status.HTTP_200_OK)
 
     def delete(self, request, *args, **kwargs):
         movie = self.get_object(kwargs.get("pk"))
