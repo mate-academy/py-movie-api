@@ -30,7 +30,7 @@ def movie_detail(request, pk):
         serializer = MovieSerializer(movie)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
-    if request.method == "POST":
+    if request.method == "PUT":
         serializer = MovieSerializer(movie, data=request.data)
         if serializer.is_valid():
             serializer.save()
