@@ -1,4 +1,5 @@
 from rest_framework.decorators import api_view
+from rest_framework.generics import get_object_or_404
 from rest_framework.request import Request
 from rest_framework.response import Response
 from rest_framework import status
@@ -24,14 +25,14 @@ def movie_list(request: Request) -> Response:
 
 
 @api_view(["GET", "PUT", "DELETE"])
-def movie_object(request: Request, pk: int) -> Response:
+def movie_detail(request: Request, pk: int) -> Response:
+    movie = get_object_or_404(Movie, pk=pk)
     if request.method == "GET":
-        movie = Movie.objects.get(pk=pk)
         serializer = MovieSerializer(movie)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
     if request.method == "PUT":
-        serializer = MovieSerializer(data=request.data)
+        serializer = MovieSerializer(movie, data=request.data)
 
         if serializer.is_valid():
             serializer.save()
@@ -40,6 +41,5 @@ def movie_object(request: Request, pk: int) -> Response:
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     if request.method == "DELETE":
-        movie = Movie.objects.get(pk=pk)
         movie.delete()
         return Response(status=200)
