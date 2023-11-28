@@ -9,7 +9,7 @@ from cinema.serializers import MovieSerializer
 
 
 @api_view(["GET", "POST"])
-def movie_list(request) -> Response:
+def movie_list(request: HttpRequest) -> Response:
     if request.method == "GET":
         movies = Movie.objects.all()
         serializer = MovieSerializer(movies, many=True)
@@ -30,7 +30,7 @@ def movie_list(request) -> Response:
 
 
 @api_view(["GET", "PUT", "DELETE"])
-def movie_detail(request, pk: int) -> Response:
+def movie_detail(request: HttpRequest, pk: int) -> Response:
     movie = get_object_or_404(Movie, pk=pk)
 
     if request.method == "GET":
