@@ -1,7 +1,5 @@
-from django.http import HttpRequest, HttpResponse
 from rest_framework.decorators import api_view
 from rest_framework.generics import get_object_or_404
-from rest_framework.parsers import JSONParser
 from rest_framework.response import Response
 from rest_framework import status
 
@@ -10,7 +8,7 @@ from cinema.serializers import MovieSerializer
 
 
 @api_view(["GET", "POST"])
-def movie_list(request: HttpRequest) -> HttpResponse:
+def movie_list(request):
     if request.method == "GET":
         movies = Movie.objects.all()
         serializer = MovieSerializer(movies, many=True)
@@ -27,7 +25,7 @@ def movie_list(request: HttpRequest) -> HttpResponse:
 
 
 @api_view(["GET", "PUT", "DELETE"])
-def movie_detail(request: HttpRequest, pk: int) -> HttpResponse:
+def movie_detail(request, pk: int):
     movie = get_object_or_404(Movie, id=pk)
 
     if request.method == "GET":
@@ -35,8 +33,7 @@ def movie_detail(request: HttpRequest, pk: int) -> HttpResponse:
         return Response(serializer.data, status=status.HTTP_200_OK)
 
     if request.method == "PUT":
-        data = JSONParser().parse(request)
-        serializer = MovieSerializer(movie, data=data)
+        serializer = MovieSerializer(movie, data=request.data)
 
         if serializer.is_valid():
             serializer.save()
