@@ -5,18 +5,20 @@ from django.views.decorators.csrf import csrf_exempt
 from rest_framework.decorators import api_view
 from rest_framework import status
 from cinema.models import Movie
-from cinema.serializers import MovieSerializers
+from cinema.serializers import MovieSerializer
+from django.shortcuts import get_object_or_404
+from django.http import HttpRequest, HttpResponse
 
 
 @api_view(["GET", "POST"])
-def movie_list(request):
+def movie_list(request: HttpRequest) -> HttpResponse:
     if request.method == "GET":
         movie = Movie.objects.all()
-        serializers = MovieSerializers(movie, many=True)
+        serializers = MovieSerializer(movie, many=True)
         return Response(serializers.data, status=status.HTTP_200_OK)
 
     if request.method == "POST":
-        serializers = MovieSerializers(data=request.data)
+        serializers = MovieSerializer(data=request.data)
         if serializers.is_valid():
             serializers.save()
             return Response(serializers.data, status=status.HTTP_201_CREATED)
@@ -24,19 +26,16 @@ def movie_list(request):
 
 
 @csrf_exempt
-def movie_detail(request, pk):
-    try:
-        movie = Movie.objects.get(pk=pk)
-    except Movie.DoesNotExist:
-        return HttpResponse(status=404)
+def movie_detail(request: HttpRequest, pk: int) -> HttpResponse:
+    movie = get_object_or_404(Movie, pk=pk)
 
     if request.method == "GET":
-        serializer = MovieSerializers(movie)
+        serializer = MovieSerializer(movie)
         return JsonResponse(serializer.data)
 
     elif request.method == "PUT":
         data = JSONParser().parse(request)
-        serializer = MovieSerializers(movie, data=data)
+        serializer = MovieSerializer(movie, data=data)
         if serializer.is_valid():
             serializer.save()
             return JsonResponse(serializer.data)
