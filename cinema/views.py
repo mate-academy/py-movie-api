@@ -1,57 +1,57 @@
-from django.http import HttpResponse, JsonResponse
-from django.views.decorators.csrf import csrf_exempt
-from rest_framework.parsers import JSONParser
+from django.http import HttpRequest
 from rest_framework import status
 from django.shortcuts import get_object_or_404
 from rest_framework.decorators import api_view
+from rest_framework.response import Response
 
 from .models import Movie
 from .serializers import MovieSerializer
 
 
 @api_view(["GET", "POST"])
-@csrf_exempt
-def movie_list(request):
+def movie_list(request: HttpRequest) -> Response:
     if request.method == "GET":
         movies = Movie.objects.all()
         serializer = MovieSerializer(movies, many=True)
-        return JsonResponse(serializer.data, safe=False)
-
-    elif request.method == "POST":
-        data = JSONParser().parse(request)
-        serializer = MovieSerializer(data=data)
+        return Response(
+            serializer.data,
+            status=status.HTTP_200_OK
+        )
+    if request.method == "POST":
+        serializer = MovieSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
-            return JsonResponse(
+            return Response(
                 serializer.data,
                 status=status.HTTP_201_CREATED
             )
-        return JsonResponse(
+        return Response(
             serializer.errors,
             status=status.HTTP_400_BAD_REQUEST
         )
 
 
 @api_view(["GET", "PUT", "DELETE"])
-@csrf_exempt
-def movie_detail(request, pk):
+def movie_detail(request: HttpRequest, pk: int) -> Response:
     movie = get_object_or_404(Movie, pk=pk)
 
     if request.method == "GET":
         serializer = MovieSerializer(movie)
-        return JsonResponse(serializer.data)
+        return Response(serializer.data, status.HTTP_200_OK)
 
-    elif request.method == "PUT":
-        data = JSONParser().parse(request)
-        serializer = MovieSerializer(movie, data=data)
+    if request.method == "PUT":
+        serializer = MovieSerializer(movie, data=request.data)
         if serializer.is_valid():
             serializer.save()
-            return JsonResponse(serializer.data)
-        return JsonResponse(
+            return Response(
+                serializer.data,
+                status=status.HTTP_200_OK
+            )
+        return Response(
             serializer.errors,
             status=status.HTTP_400_BAD_REQUEST
         )
 
-    elif request.method == "DELETE":
+    if request.method == "DELETE":
         movie.delete()
-        return HttpResponse(status=status.HTTP_204_NO_CONTENT)
+        return Response(status=status.HTTP_204_NO_CONTENT)
