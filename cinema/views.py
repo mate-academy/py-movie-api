@@ -25,13 +25,16 @@ def movie_list(request) -> Response:
 
 @api_view(["GET", "PUT", "DELETE"])
 def movie_info(request, pk: int) -> Response:
-    movie = get_object_or_404(Movie, pk=pk)
+    try:
+        movie = Movie.objects.get(pk=pk)
+    except Movie.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
 
     if request.method == "GET":
         serializer = MovieSerializer(movie)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
-    if request.method == "PUT":
+    elif request.method == "PUT":
         serializer = MovieSerializer(movie, data=request.data)
 
         if serializer.is_valid():
