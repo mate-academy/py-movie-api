@@ -35,7 +35,7 @@ def movie_detail(request: Request, pk: int) -> Response:
 
         if serializer.is_valid():
             serializer.save()
-            return Response(serializer.data, status=status.HTTP_202_ACCEPTED)
+            return Response(serializer.data, status=status.HTTP_200_OK)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     if request.method == "PATCH":
         serializer = MovieSerializer(
@@ -46,7 +46,7 @@ def movie_detail(request: Request, pk: int) -> Response:
 
         if serializer.is_valid():
             serializer.save()
-            return Response(serializer.data, status=status.HTTP_202_ACCEPTED)
+            return Response(serializer.data, status=status.HTTP_200_OK)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     if request.method == "DELETE":
         movie.delete()
