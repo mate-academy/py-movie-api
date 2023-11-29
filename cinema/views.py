@@ -1,14 +1,15 @@
-from django.shortcuts import render
+from django.http import HttpRequest, HttpResponse
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
+from rest_framework.generics import get_object_or_404
 
 from cinema.models import Movie
 from cinema.serializers import MovieSerializer
 
 
 @api_view(["GET", "POST"])
-def movie_list(request):
+def movie_list(request: HttpRequest) -> HttpResponse:
     if request.method == "GET":
         movies = Movie.objects.all()
         serializer = MovieSerializer(movies, many=True)
@@ -26,11 +27,8 @@ def movie_list(request):
 
 
 @api_view(["GET", "PUT", "DELETE"])
-def movie_detail(request, pk):
-    try:
-        movie = Movie.objects.get(pk=pk)
-    except Movie.DoesNotExist:
-        return Response(status=status.HTTP_404_NOT_FOUND)
+def movie_detail(request: HttpRequest, pk: int) -> HttpResponse:
+    movie = get_object_or_404(Movie, pk=pk)
 
     if request.method == "GET":
         serializer = MovieSerializer(movie)
@@ -50,3 +48,4 @@ def movie_detail(request, pk):
             {'message': 'Movie deleted successfully'},
             status=status.HTTP_204_NO_CONTENT
         )
+
