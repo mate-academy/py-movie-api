@@ -19,7 +19,7 @@ def movie_list(request) -> Response:
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        return Response(serializer.errors, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
 
 
 @api_view(["GET", "PUT", "DELETE"])
@@ -34,7 +34,7 @@ def movie_detail(request, pk: int) -> Response:
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_200_OK)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        return Response(serializer.errors, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
     if request.method == "DELETE":
         movie.delete()
         return Response(status=status.HTTP_200_OK)
