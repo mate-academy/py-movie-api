@@ -20,7 +20,7 @@ def movie_list(request):
     if request.method == "POST":
         serializer = MovieSerializer(data=request.data)
 
-        if serializer.is_valid():
+        if serializer.is_valid(raise_exception=True):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
 
