@@ -30,8 +30,8 @@ def movie_detail(request, pk):
         serializer = MovieSerializer(movie, data=request.data)
         serializer.is_valid(raise_exception=True)
         serializer.save()
-        return Response(serializer.data, status=201)
+        return Response(serializer.data, status=200)
 
     if request.method == "DELETE":
         movie.delete()
-        return Response(status=404)
+        return Response(status=204)
