@@ -3,17 +3,13 @@ from rest_framework import serializers
 from cinema.models import Movie
 
 
-class CinemaSerializer(serializers.ModelSerializer):
-    # id = serializers.IntegerField(read_only=True)
-    # title = serializers.CharField(required=True)
-    # description = serializers.CharField(required=False)
-    # duration = serializers.IntegerField(required=True)
+class MovieSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         """
         Create and return a new `Snippet` instance, given the validated data.
         """
-        return Cinema.objects.create(**validated_data)
+        return Movie.objects.create(**validated_data)
 
     def update(self, instance, validated_data):
         """
@@ -28,5 +24,3 @@ class CinemaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Movie
         fields = ("id", "title", "description", "duration")
-
-
