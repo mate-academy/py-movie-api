@@ -6,5 +6,5 @@ app_name = "cinema"
 
 urlpatterns = [
     path("movies/", movies_list, name="movies_list"),
-    path("movies/<int:pk>", movies_detail, name="movies_detail"),
+    path("movies/<int:pk>/", movies_detail, name="movies_detail"),
 ]
