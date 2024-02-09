@@ -21,5 +21,3 @@ class MovieSerializer(serializers.Serializer):
                                                instance.duration)
         instance.save()
         return instance
-
-
