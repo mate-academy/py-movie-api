@@ -7,7 +7,11 @@ from cinema.views import (
 
 urlpatterns = [
     path("movies/", movie_api_get_post_list, name="movies-list"),
-    path("movies/<int:pk>/", movie_api_get_put_delete_by_id, name="get-movie-by-id"),
+    path(
+        "movies/<int:pk>/",
+        movie_api_get_put_delete_by_id,
+        name="get-movie-by-id"
+    ),
 ]
 
 app_name = "cinema"

@@ -26,7 +26,9 @@ def movie_api_get_put_delete_by_id(request, pk=None):
     movie = get_object_or_404(Movie, pk=pk)
 
     if request.method == "GET":
-        serializer = MovieSerializer(serializer=MovieSerializer(movie, many=True))
+        serializer = MovieSerializer(
+            serializer=MovieSerializer(movie, many=True)
+        )
 
         return Response(serializer.data, status=status.HTTP_200_OK)
     elif request.method == "PUT":
