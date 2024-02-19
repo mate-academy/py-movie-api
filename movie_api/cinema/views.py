@@ -7,8 +7,11 @@ from cinema.serializers import MovieSerializer
 
 
 @api_view(["GET"])
-def movies_list(request):
-    if request.method == 'GET':
+def movies_list(request, pk=None):
+    if pk is not None:
+        movies = Movie.objects.filter(pk=pk)
+    else:
         movies = Movie.objects.all()
-        serializer = MovieSerializer(movies, many=True)
-        return Response(serializer.data, status=status.HTTP_200_OK)
+    serializer = MovieSerializer(movies, many=True)
+    return Response(serializer.data, status=status.HTTP_200_OK)
+
