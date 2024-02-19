@@ -77,7 +77,7 @@ WSGI_APPLICATION = "movie_api.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+        "NAME": BASE_DIR / "cinema_service_db.sqlite3",
     }
 }
 
