@@ -23,22 +23,18 @@ def movie_api_get_post_list(request):
 
 @api_view(["GET", "PUT", "DELETE"])
 def movie_api_get_put_delete_by_id(request, pk=None):
+    movie = get_object_or_404(Movie, pk=pk)
+
     if request.method == "GET":
-        movies = get_object_or_404(Movie, pk=pk)
-        serializer = MovieSerializer(serializer=MovieSerializer(movies, many=True))
+        serializer = MovieSerializer(serializer=MovieSerializer(movie, many=True))
 
         return Response(serializer.data, status=status.HTTP_200_OK)
     elif request.method == "PUT":
-        movie = Movie.objects.get(pk=pk)
         serializer = MovieSerializer(movie, data=request.data)
 
         if serializer.is_valid(raise_exception=True):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
     elif request.method == "DELETE":
-        movie = get_object_or_404(Movie, pk=pk)
-
         movie.delete()
-
         return Response(status=status.HTTP_204_NO_CONTENT)
-
