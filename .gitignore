@@ -7,4 +7,4 @@ venv/
 .venv/
 .pytest_cache/
 **__pycache__/
-db.sqlite3
+cinema_service_db.sqlite3
