@@ -7,7 +7,7 @@ from cinema.serializers import MovieSerializer
 
 
 @api_view(["GET", "POST"])
-def get_movie_or_movies(request, pk=None):
+def movie_api(request, pk=None):
     if request.method == 'GET':
         if pk is not None:
             movies = Movie.objects.filter(pk=pk)

@@ -1,11 +1,11 @@
 from django.urls import path
 
-from cinema.views import get_movie_or_movies
+from cinema.views import movie_api
 
 urlpatterns = [
-    path('movies/', get_movie_or_movies, name='movies-list'),
-    path('movies/<int:pk>/', get_movie_or_movies, name='get-movie-by-id'),
-    path('movies/', get_movie_or_movies, name='create-movie'),
+    path('movies/', movie_api, name='movies-list'),
+    path('movies/<int:pk>/', movie_api, name='get-movie-by-id'),
+    path('movies/', movie_api, name='create-movie'),
 ]
 
 app_name = 'cinema'
