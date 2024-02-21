@@ -22,12 +22,14 @@ def movie_list_api(request):
 
 @api_view(["GET", "PUT", "DELETE"])
 def movie_api(request, pk: int):
-    if request.method == "GET":
+    try:
         movie = Movie.objects.get(pk=pk)
+    except Movie.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+    if request.method == "GET":
         serializer = MovieSerializer(movie)
         return Response(serializer.data, status=status.HTTP_200_OK)
     if request.method == "PUT":
-        movie = Movie.objects.get(pk=pk)
         serializer = MovieSerializer(movie, data=request.data)
         print(request.data)
         if serializer.is_valid():
@@ -35,6 +37,5 @@ def movie_api(request, pk: int):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_200_OK)
     if request.method == "DELETE":
-        movie = Movie.objects.get(pk=pk)
         movie.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
