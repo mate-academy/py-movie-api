@@ -2,7 +2,7 @@ from rest_framework import serializers
 from cinema.models import Movie
 
 
-class MovieSerializer(serializers.ModelSerializer):
+class MovieSerializer(serializers.Serializer):
     title = serializers.CharField(max_length=255)
     description = serializers.CharField(required=False)
     duration = serializers.IntegerField(required=False)
@@ -16,7 +16,3 @@ class MovieSerializer(serializers.ModelSerializer):
         instance.duration = validated_data.get('duration', instance.duration)
         instance.save()
         return instance
-
-    class Meta:
-        model = Movie
-        fields = "__all__"
