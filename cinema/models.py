@@ -7,7 +7,7 @@ class Movie(models.Model):
     duration = models.IntegerField()
 
     class Meta:
-        verbose_name_plural = 'movies'
+        verbose_name_plural = "movies"
 
     def __str__(self):
-        return f'{self.title}'
+        return f"{self.title}"

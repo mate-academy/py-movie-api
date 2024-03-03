@@ -1,22 +1,18 @@
 from django.urls import path
-from cinema.views import movie_list_view, movie_detail_view, movie_delete_view
+
+from cinema.views import movie_list_view, movie_detail_view
 
 urlpatterns = [
     path(
-        'movies/',
+        "movies/",
         movie_list_view,
-        name='movie-list'
+        name="movie-list"
     ),
     path(
-        'movies/<int:pk>/details/',
+        "movies/<int:pk>/",
         movie_detail_view,
-        name='movie-detail'
-    ),
-    path(
-        'movies/<int:pk>/delete/',
-        movie_delete_view,
-        name='movie-delete'
-    ),
+        name="movie-detail"
+    )
 ]
 
-app_name = 'cinema'
+app_name = "cinema"
