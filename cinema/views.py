@@ -40,4 +40,3 @@ def movie_by_id(request, pk):
 
     movie.delete()
     return Response(status=204)
-
