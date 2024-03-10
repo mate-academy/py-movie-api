@@ -30,7 +30,9 @@ def movie_by_id(request, pk):
         serializer = MovieSerializer(movie)
         return Response(serializer.data, status=200)
     elif request.method == "PUT":
-        serializer = MovieSerializer(movie, data=request.data)
+        serializer = MovieSerializer(
+            movie, data=request.data, partial=True
+        )
 
         if serializer.is_valid():
             serializer.save()
