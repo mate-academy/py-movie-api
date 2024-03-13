@@ -19,23 +19,17 @@ def movie_list(request):
             return JsonResponse(serializer.data)
 
 
-def get_movie(pk):
-    return get_object_or_404(Movie, pk=pk)
-
-
 @api_view(["GET", "DELETE", "PUT"])
 def movie_detail(request, pk: int):
+    movie = get_object_or_404(Movie, pk=pk)
     if request.method == "GET":
-        movie = get_movie(pk)
         serializer = MovieSerializer(movie)
         return JsonResponse(serializer.data, status=200)
     elif request.method == "PUT":
-        movie = get_movie(pk)
         serializer = MovieSerializer(movie, data=request.data)
         if serializer.is_valid():
             serializer.save()
             return JsonResponse(serializer.data, status=200)
-    elif request.method == "DELETE":
-        movie = get_movie(pk)
+    else:
         movie.delete()
         return JsonResponse(status=204)
