@@ -6,5 +6,5 @@ class Movie(models.Model):
     description = models.TextField()
     duration = models.PositiveIntegerField()
 
-    def __str__(self):
-        return self.title
+    def __str__(self) -> str:
+        return f"Movie: {self.title}, duration: {self.duration}"

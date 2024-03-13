@@ -36,5 +36,3 @@ def movie_detail(request, movie_id):
     else:
         movie.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
-
-
