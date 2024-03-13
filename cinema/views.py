@@ -12,11 +12,12 @@ def movie_list(request):
         movies = Movie.objects.all()
         serializer = MovieSerializer(movies, many=True)
         return JsonResponse(serializer.data, safe=False, status=200)
-    elif request.method == "POST":
+    else:
         serializer = MovieSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
             return JsonResponse(serializer.data)
+        return JsonResponse(serializer.errors, status=400)
 
 
 @api_view(["GET", "DELETE", "PUT"])
