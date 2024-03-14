@@ -3,6 +3,6 @@ from movie_project.cinema import views
 
 
 urlpatterns = [
-    path("api/cinema/movies/", views.movie_list, name="movie_list"),
-    path("api/cinema/movies/<int:pk>/", views.movie_list, name="movie_detail"),
+    path("/movies/", views.movie_list, name="movie_list"),
+    path("/movies/<int:pk>/", views.movie_list, name="movie_detail"),
 ]
