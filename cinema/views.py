@@ -1,4 +1,5 @@
 from django.http import Http404
+from django.shortcuts import get_object_or_404
 from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.request import Request
@@ -26,10 +27,7 @@ def get_movie_list(request: Request) -> Response:
 
 @api_view(["GET", "PUT", "DELETE"])
 def get_movie_by_id(request, movie_id):
-    try:
-        movie = Movie.objects.get(id=movie_id)
-    except Movie.DoesNotExist:
-        raise Http404
+    movie = get_object_or_404(Movie, id=movie_id)
 
     if request.method == "GET":
         serializer = MovieSerializer(movie)
