@@ -4,8 +4,8 @@ from cinema.models import Movie
 
 
 class MovieSerializer(serializers.Serializer):
-    id = serializers.IntegerField(read_only=True)  # noqa
-    title = serializers.CharField(max_length=255, required=True)
+    id = serializers.IntegerField(read_only=True)
+    title = serializers.CharField(max_length=255)
     description = serializers.CharField(required=False)
     duration = serializers.IntegerField(required=False)
 
