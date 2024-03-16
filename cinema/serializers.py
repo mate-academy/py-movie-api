@@ -5,9 +5,9 @@ from cinema.models import Movie
 
 class MovieSerializer(serializers.Serializer):
     id = serializers.IntegerField(read_only=True)
-    title = serializers.CharField(required=False)
-    description = serializers.CharField(required=False)
-    duration = serializers.DurationField(required=False)
+    title = serializers.CharField()
+    description = serializers.CharField()
+    duration = serializers.DurationField()
 
     def create(self, validated_data):
         return Movie.objects.create(**validated_data)
