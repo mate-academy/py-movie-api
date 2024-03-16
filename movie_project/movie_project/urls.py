@@ -20,5 +20,5 @@ from django.urls import path, include
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("movies/", include("cinema.urls")),
+    path("api/cinema/", include("cinema.urls"), namespace="cinema"),
 ]
