@@ -3,7 +3,7 @@ from rest_framework import serializers
 from cinema.models import Movie
 
 
-class MovieSerializer(serializers.ModelSerializer):
+class MovieSerializer(serializers.Serializer):
     id = serializers.IntegerField(read_only=True)
     title = serializers.CharField(max_length=255)
     description = serializers.CharField(required=False)
@@ -11,16 +11,17 @@ class MovieSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         """
-        Create and return a new "Movie` instance, given the validated data.
+        Create & return a new "Movie` instance, given the validated data.
         """
         return Movie.objects.create(**validated_data)
 
     def update(self, instance, validated_data):
         """
-        Update and return an existing "Movie" instance, given the validated data.
+        Update & return an existing "Movie" instance, given the validated data.
         """
         instance.title = validated_data.get("title", instance.title)
-        instance.description = validated_data.get("description", instance.description)
+        instance.description = validated_data.get("description",
+                                                  instance.description)
         instance.duration = validated_data.get("duration", instance.duration)
         instance.save()
         return instance
