@@ -17,7 +17,10 @@ def movie_list(request):
         serializer = CinemaSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
-            return Response(data=serializer.data, status=status.HTTP_201_CREATED)
+            return Response(
+                data=serializer.data,
+                status=status.HTTP_201_CREATED
+            )
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
@@ -29,6 +32,7 @@ def movie_detail(request, pk):
         return Response(data=serializer.data, status=status.HTTP_200_OK)
     elif request.method == 'PUT':
         serializer = CinemaSerializer(movie, data=request.data)
+        print(serializer)
         if serializer.is_valid():
             serializer.save()
             return Response(data=serializer.data, status=status.HTTP_200_OK)
