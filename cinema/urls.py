@@ -5,7 +5,9 @@ from cinema.views import (
     update
 )
 
+app_name = "cinema"
+
 urlpatterns = [
-    path("", admin.site.urls),
+    path(""),
 
 ]
