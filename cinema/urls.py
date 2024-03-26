@@ -1,13 +1,12 @@
-from django.contrib import admin
 from django.urls import path
 from cinema.views import (
-    create,
-    update
+    movie_list,
+    movie_detail,
 )
 
 app_name = "cinema"
 
 urlpatterns = [
-    path(""),
-
+    path("movies/", movie_list, name="movie-list"),
+    path("movie/<int:pk>", movie_detail, name="movie-detail"),
 ]

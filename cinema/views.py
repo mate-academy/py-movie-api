@@ -1,9 +1,9 @@
 from django.shortcuts import render
 
 
-def create():
+def movie_list(request):
     ...
 
 
-def update():
+def movie_detail(request):
     ...
