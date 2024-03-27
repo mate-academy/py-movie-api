@@ -1,0 +1,6 @@
+venv
+*migrations/
+*.sqlite3
+*.db3
+*.pyc
+*.idea
