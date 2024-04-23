@@ -29,10 +29,9 @@ def cinema_detail(request: Request, pk: int) -> Response:
         return Response(serializer.data, status=200)
     elif request.method == "PUT":
         serializer = MovieSerializer(movie, data=request.data)
-        if serializer.is_valid():
+        if serializer.is_valid(raise_exception=True):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_200_OK)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     elif request.method == "DELETE":
         movie.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
