@@ -6,7 +6,7 @@ from rest_framework import status
 
 
 from cinema.models import Movie
-from cinema.serializers import Movie, MovieSerializer
+from cinema.serializers import MovieSerializer
 
 
 def create_movie_or_400(data, instance=None):
