@@ -1,3 +1,5 @@
 venv
 pyproject.toml
 .idea
+__pycache__
+db.sqlite3
