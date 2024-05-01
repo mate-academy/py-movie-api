@@ -9,7 +9,7 @@ from cinema.models import Movie
 from cinema.serializers import MovieSerializer
 
 
-def create_movie_or_raise(data, instance=None):
+def movie_create_or_update(data, instance=None):
     if instance:
         serializer = MovieSerializer(instance, data)
     else:
@@ -25,8 +25,7 @@ def movie_list(request):
         movies = Movie.objects.all()
         serializer = MovieSerializer(movies, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
-    else:
-        return create_movie_or_raise(request.data)
+    return movie_create_or_update(request.data)
 
 
 @api_view(["GET", "PUT", "DELETE"])
@@ -36,8 +35,7 @@ def movie_detail(request, pk):
         serializer = MovieSerializer(movie)
         return Response(serializer.data, status=status.HTTP_200_OK)
     if request.method == "PUT":
-        return create_movie_or_raise(request.data, movie)
+        return movie_create_or_update(request.data, movie)
     elif request.method == "DELETE":
-        movie = get_object_or_404(Movie, pk=pk)
         movie.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
