@@ -1,5 +1,6 @@
 from rest_framework import serializers
-from cinema.models import Cinema
+
+from cinema.models import Movie
 
 
 class CinemaSerializer(serializers.ModelSerializer):
@@ -10,7 +11,7 @@ class CinemaSerializer(serializers.ModelSerializer):
         duration = serializers.IntegerField(required=True)
 
     def create(self, validated_data):
-        return Cinema.objects.create(**validated_data)
+        return Movie.objects.create(**validated_data)
 
     def update(self, instance, validated_data):
         instance.title = validated_data.get("title", instance.title)

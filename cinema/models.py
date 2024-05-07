@@ -1,7 +1,7 @@
 from django.db import models
 
 
-class Cinema(models.Model):
+class Movie(models.Model):
     title = models.CharField(max_length=50, null=False)
     description = models.TextField(max_length=500, null=False)
     duration = models.IntegerField()
