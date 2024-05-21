@@ -30,10 +30,9 @@ def movie_detail(request, pk):
         return Response(serializer.data, status=status.HTTP_200_OK)
     elif request.method == "PUT":
         serializer = CinemaSerializer(movie, data=request)
-        if serializer.is_valid():
-            serializer.is_valid(raise_exception=True)
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
     else:
         movie.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
