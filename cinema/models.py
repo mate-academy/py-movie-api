@@ -6,12 +6,5 @@ class Movie(models.Model):
     description = models.TextField(null=True, blank=True)
     duration = models.IntegerField(null=True, blank=True)
 
-    def create(self, validated_data):
-        return Movie.objects.create(**validated_data)
-
-    def update(self, instance, validated_data):
-        instance.title = validated_data.get('title', instance.title)
-        instance.description = validated_data.get('description', instance.description)
-        instance.duration = validated_data.get('duration', instance.duration)
-        instance.save()
-        return instance
+    def __str__(self):
+        return f"{self.title} - {self.duration}"
