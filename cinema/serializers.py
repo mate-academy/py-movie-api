@@ -2,11 +2,11 @@ from rest_framework import serializers
 from cinema.models import Movie
 
 
-class MovieSerializer(serializers.ModelSerializer):
+class MovieSerializer(serializers.ModelSerializer) :
     id = serializers.IntegerField(read_only=True)
-    title = serializers.CharField(required=True)
+    title = serializers.CharField()
     description = serializers.CharField(required=False, max_length=255)
-    duration = serializers.IntegerField(required=True)
+    duration = serializers.IntegerField()
 
     class Meta:
         model = Movie
