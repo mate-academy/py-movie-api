@@ -1,4 +1,4 @@
-from django.http import JsonResponse, HttpRequest
+from django.http import HttpRequest
 from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.generics import get_object_or_404
@@ -9,7 +9,7 @@ from cinema.serializers import MovieSerializer
 
 
 @api_view(["GET", "POST"])
-def movies_list(request):
+def movies_list(request: HttpRequest) -> Response:
     if request.method == 'GET':
         movies = Movie.objects.all()
         serializer = MovieSerializer(movies, many=True)
@@ -23,7 +23,7 @@ def movies_list(request):
 
 
 @api_view(["GET", "PUT", "DELETE"])
-def movies_detail(request, pk: int):
+def movies_detail(request: HttpRequest, pk: int) -> Response:
     movie = get_object_or_404(Movie, pk=pk)
     if request.method == 'GET':
         serializer = MovieSerializer(movie)
