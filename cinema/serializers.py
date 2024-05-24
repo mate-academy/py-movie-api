@@ -1,3 +1,5 @@
+from typing import Dict, Any
+
 from rest_framework import serializers
 
 from cinema.models import Movie
@@ -13,10 +15,10 @@ class MovieSerializer(serializers.ModelSerializer):
         model = Movie
         fields = ["id", "title", "description", "duration"]
 
-    def create(self, validated_data) -> Movie:
+    def create(self, validated_data: Dict[str, Any]) -> Movie:
         return Movie.objects.create(**validated_data)
 
-    def update(self, instance, validated_data):
+    def update(self, instance, validated_data: Dict[str, Any]) -> Movie:
         instance.title = validated_data.get("title", instance.title)
         instance.description = validated_data.get("description", instance.description)
         instance.duration = validated_data.get("duration", instance.duration)
