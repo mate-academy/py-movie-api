@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models import CharField
 
 
 class Movie(models.Model):
@@ -6,5 +7,5 @@ class Movie(models.Model):
     description = models.TextField()
     duration = models.IntegerField()
 
-    def __str__(self):
+    def __str__(self) -> str:
         return self.title
