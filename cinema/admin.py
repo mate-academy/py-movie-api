@@ -1,3 +1,11 @@
 from django.contrib import admin
+from cinema.models import Cinema
 
-# Register your models here.
+
+@admin.register(Cinema)
+class CinemaAdmin(admin.ModelAdmin):
+    list_display = [
+        "title",
+        "description",
+        "duration"
+    ]
