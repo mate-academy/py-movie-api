@@ -1,8 +1,8 @@
 from django.contrib import admin
-from cinema.models import Cinema
+from cinema.models import Movie
 
 
-@admin.register(Cinema)
+@admin.register(Movie)
 class CinemaAdmin(admin.ModelAdmin):
     list_display = [
         "title",
