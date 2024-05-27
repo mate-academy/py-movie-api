@@ -8,10 +8,6 @@
 __pycache__/
 local_settings.py
 
-# Ignore the migration files, except for __init__.py
-**/migrations/*.py
-!**/migrations/__init__.py
-
 # Ignore the SQLite database file
 *.sqlite3
 
