@@ -8,7 +8,9 @@ Make sure you don't push `.pyc`, `.idea` files.
 
 
 ## Code Style
-1. Avoid using an `if` condition to check if a serializer is valid. Instead, use the `raise_exception=True` flag when calling `serializer.is_valid()`. This will automatically raise a `ValidationError` if the data is invalid, which is then caught by the DRF exception handler to return a `400 Bad Request` response.
+1. Avoid using an `if` condition to check if a serializer is valid. Instead, use the `raise_exception=True` flag when 
+calling `serializer.is_valid()`. This will automatically raise a `ValidationError` if the data is invalid, 
+which is then caught by the DRF exception handler to return a `400 Bad Request` response.
 
 
 Good example:
