@@ -1,0 +1,7 @@
+asgiref==3.8.1
+Django==5.0.3
+django-rest==0.8.7
+django-rest-framework==0.1.0
+djangorestframework==3.15.1
+six==1.16.0
+sqlparse==0.4.4
