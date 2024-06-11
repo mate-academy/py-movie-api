@@ -35,4 +35,3 @@ def movies_detail(request: Request, pk: int) -> Response:
     elif request.method == "DELETE":
         movie.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
-
