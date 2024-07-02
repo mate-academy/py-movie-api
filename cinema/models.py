@@ -6,5 +6,8 @@ class Movie(models.Model):
     description = models.TextField(null=True, blank=True)
     duration = models.IntegerField()
 
+    class Meta:
+        verbose_name_plural = "movies"
+
     def __str__(self) -> str:
         return f"{self.title}: ~ {self.duration} min."
