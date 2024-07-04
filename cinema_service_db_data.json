@@ -1,6 +1,6 @@
 [
   {
-    "model": "cinema.movie",
+    "model": "movie.movie",
     "pk": 1,
     "fields": {
       "title": "The Departed",
@@ -9,7 +9,7 @@
     }
   },
   {
-    "model": "cinema.movie",
+    "model": "movie.movie",
     "pk": 2,
     "fields": {
       "title": "Inception",
@@ -18,7 +18,7 @@
     }
   },
   {
-    "model": "cinema.movie",
+    "model": "movie.movie",
     "pk": 3,
     "fields": {
       "title": "Looper",
@@ -27,7 +27,7 @@
     }
   },
   {
-    "model": "cinema.movie",
+    "model": "movie.movie",
     "pk": 4,
     "fields": {
       "title": "Unbreakable",
