@@ -1,0 +1,6 @@
+[flake8]
+inline_quotes = "
+exclude = 
+    **migrations
+    env
+    settings.py
