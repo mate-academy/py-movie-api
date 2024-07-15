@@ -15,7 +15,7 @@ In this task, you should implement an API that provides CRUD operations for the 
     * `GET api/cinema/movies/<pk>/` - should return a movie with given id 
     * `POST api/cinema/movies/` - should create a new movie based on passed data
     * `PUT api/cinema/movies/<pk>/` - should update the movie with given id based on passed data
-    * `DELETE api/cinema/movies/<pk>/` - should delete the movie with given id
+    * `DELETE apicinema/movies/<pk>/` - should delete the movie with given id
 
 Use the following command to load prepared data from fixture to test and debug your code:
 
