@@ -71,7 +71,7 @@ Good example:
 
 ```python
 urlpatterns = [
-    path("movies/<pk>/", movie_detail, name="movie-detailed")
+    path("movies/<pk>/", movie_detail, name="cinema-detailed")
 ]
 ```
 
@@ -79,7 +79,7 @@ Bad example:
 
 ```python
 urlpatterns = [
-    path("movies/<pk>", movie_detail, name="movie-detailed")
+    path("movies/<pk>", movie_detail, name="cinema-detailed")
 ]
 ```
 
