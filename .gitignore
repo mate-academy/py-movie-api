@@ -1,0 +1,17 @@
+.idea/
+db.sqlite3
+venv/
+__pycache__/
+cinema/__pycache__/
+manage.py
+cinema/__init__.py
+cinema/tests.py
+app/__init__.py
+app/asgi.py
+app/wsgi.py
+
+
+
+
+
+
