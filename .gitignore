@@ -1,0 +1,4 @@
+.venv
+cinema_service_db_data.json
+db.sqlite3
+.idea
