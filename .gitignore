@@ -1,0 +1,8 @@
+.idea/
+venv/
+db.sqlite3
+config/__pycache__/settings.cpython-311.pyc
+config/__pycache__/urls.cpython-311.pyc
+config/__pycache__/wsgi.cpython-311.pyc
+cinema/migrations/__pycache__/
+cinema/__pycache__/
