@@ -1,0 +1,73 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Django specific files
+db.sqlite3
+media/
+*.log
+
+# Environment variables
+.env
+
+# Django migrations
+**/migrations/
+
+# Unit test / coverage reports
+htmlcov/
+*.cover
+*.py,cover
+.hypothesis/
+
+# Virtual environment
+venv/
+ENV/
+env/
+venv.bak/
+venv.bak.bak/
+
+# Editor directories and files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# macOS-specific files
+.DS_Store
+
+# Backup files
+*.bak
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# PyInstaller
+#  Usually these files are written by a python script from a template
+#  before PyInstaller builds the exe, so as to inject date/other infos into it.
+*.manifest
+*.spec
+
+# Other
+checklist.md
+cinema_service_db_data.json
+README.md
