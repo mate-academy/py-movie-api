@@ -4,16 +4,16 @@ import io
 from rest_framework.renderers import JSONRenderer
 
 from cinema.models import Movie
-from cinema.serializer import MovieSerializer
+from cinema.serializers import MovieSerializer
 
 
-def serialize_car_object(movie: Movie) -> bytes:
+def serialize_movie_object(movie: Movie) -> bytes:
     serializer = MovieSerializer(movie)
     json = JSONRenderer().render(serializer.data)
     return json
 
 
-def deserialize_car_object(json: bytes) -> Movie:
+def deserialize_movie_object(json: bytes) -> Movie:
     stream = io.BytesIO(json)
     data = JSONParser().parse(stream)
     serializer = MovieSerializer(data=data)
