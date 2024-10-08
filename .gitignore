@@ -1,0 +1,26 @@
+# Python
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+*.sqlite3
+*.log
+
+# venv
+venv/
+.env
+
+# PyCharm
+.idea/
+*.iml
+
+# Migrations
+*/migrations/__pycache__/
+*/migrations/*.pyc
+*/migrations/*.pyo
+*/migrations/*.pyd
+*/migrations/*.sqlite3
+*/migrations/*.log
+
+# Static files
+/static/
