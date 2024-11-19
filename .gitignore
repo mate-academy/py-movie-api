@@ -1,0 +1,5 @@
+venv
+cinema/migrations
+db.sqlite3
+.idea
+app/settings.py
