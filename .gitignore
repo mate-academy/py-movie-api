@@ -1,0 +1,38 @@
+### Python ###
+*.py[cod]
+*$py.class
+*.so
+__pycache__/
+
+### Django ###
+*.log
+*.pot
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+media/
+
+### Virtual Environments ###
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+### PyCharm ###
+.idea/
+.idea/**/workspace.xml
+.idea/**/tasks.xml
+.idea/**/usage.statistics.xml
+.idea/**/dictionaries
+.idea/**/shelf
+
+### Unit test / coverage reports ###
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.pytest_cache/
