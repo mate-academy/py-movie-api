@@ -1,0 +1,12 @@
+.idea/
+.vscode/
+*.iml
+.env
+.DS_Store
+venv/
+.venv/
+.pytest_cache/
+**__pycache__/
+cinema_service_db_data.json
+db.sqlite3
+.idea
