@@ -1,0 +1,5 @@
+cinema/migrations
+db.sqlite3
+venv
+cinema/__pycache__/
+.idea/
