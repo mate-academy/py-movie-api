@@ -1,0 +1,17 @@
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+*.db
+*.sqlite3
+*.log
+
+.venv/
+
+*.env
+
+migrations/
+
+*.idea/
+.DS_Store
+*.bak
