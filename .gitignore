@@ -1,0 +1,59 @@
+# Python bytecode
+*.pyc
+*.pyo
+__pycache__/
+*.pyd
+*.pyo
+
+# Virtual environment
+.venv/
+env/
+venv/
+
+# Django specific
+*.log
+db.sqlite3
+media/
+staticfiles/
+
+# PyCharm project files
+.idea/
+
+# VSCode project files
+.vscode/
+
+# System-specific files
+.DS_Store
+Thumbs.db
+
+# Python dependency files
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Test and coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+*.cover
+coverage.xml
+*.coveragerc
+
+# Migrations
+*/migrations/*
+
+# Ignore the below migrations while keeping the `__init__.py`
+*/migrations/*.py[cod]
+
+# Ignore secrets
+.env
+.env.*
+
+# Ignore compiled translations
+*.mo
+
+# Ignore built distributions
+*.egg
+*.egg-info/
+dist/
+build/
