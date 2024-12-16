@@ -1,0 +1,20 @@
+[
+    {
+        "model": "cinema.movie",
+        "pk": 1,
+        "fields": {
+            "title": "Inception",
+            "description": "A mind-bending thriller.",
+            "duration": 148
+        }
+    },
+    {
+        "model": "cinema.movie",
+        "pk": 2,
+        "fields": {
+            "title": "The Matrix",
+            "description": "A hacker discovers reality is a simulation.",
+            "duration": 136
+        }
+    }
+]
