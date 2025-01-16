@@ -1,0 +1,7 @@
+venv
+.idea
+db.sqlite3
+__pycache__
+cinema_project/__pycache__/settings.cpython-312.pyc
+cinema_project/__pycache__/urls.cpython-312.pyc
+.env
