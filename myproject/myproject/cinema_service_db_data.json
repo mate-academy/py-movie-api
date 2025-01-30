@@ -1,0 +1,29 @@
+[
+  {
+    "model": "cinema.movie",
+    "pk": 1,
+    "fields": {
+      "title": "The Dark Knight",
+      "description": "Batman battles the Joker in Gotham City.",
+      "duration": 152
+    }
+  },
+  {
+    "model": "cinema.movie",
+    "pk": 2,
+    "fields": {
+      "title": "Inception",
+      "description": "A thief who enters people's dreams to steal secrets.",
+      "duration": 148
+    }
+  },
+  {
+    "model": "cinema.movie",
+    "pk": 3,
+    "fields": {
+      "title": "Interstellar",
+      "description": "A group of explorers travel through a wormhole in space.",
+      "duration": 169
+    }
+  }
+]
