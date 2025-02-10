@@ -30,7 +30,11 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["http://localhost:8000/"]
+ALLOWED_HOSTS = []
+
+HOSTNAME = os.getenv('HOSTNAME')
+if HOSTNAME:
+    ALLOWED_HOSTS.append(HOSTNAME)
 
 
 # Application definition
