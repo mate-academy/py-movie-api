@@ -23,9 +23,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-jwiw=o(mu)3koqorv=c_12$0g=!0yzev7g^b$v+)s91c5#@nc#'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    "127.0.0.1"
+]
 
 
 # Application definition
@@ -38,7 +40,6 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "cinema",
-    "user",
     "rest_framework",
 ]
 
