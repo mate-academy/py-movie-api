@@ -19,4 +19,18 @@ def movie_list(request) -> Response:
         serializer.save()
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
-# Create your views here.
+
+@api_view(["GET", "PUT", "DELETE"])
+def movie_detail(request, pk: int) -> Response:
+    movie = get_object_or_404(Movie, pk=pk)
+    if request.method == "GET":
+        serializer = MovieSerializer(movie)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+    elif request.method == "PUT":
+        serializer = MovieSerializer(movie, data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data, status=status.HTTP_200_OK)
+    else:
+        movie.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
