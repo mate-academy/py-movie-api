@@ -1,0 +1,55 @@
+# Python bytecode files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.swp
+
+# Virtual Environment
+venv/
+.env/
+.venv/
+ENV/
+env/
+# Add your environment configuration files (e.g., .env files) if needed
+
+# Django stuff:
+*.log
+*.pot
+*.pyc
+*.sqlite3
+db.sqlite3
+
+# Django media files (if you're using media storage locally)
+media/
+
+# Static files (if you're using static storage locally)
+static/
+
+# Secrets and sensitive information
+*.env
+*.ini
+*.cfg
+
+# VS Code settings
+.vscode/
+
+# JetBrains IDEs
+.idea/
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+
+# Node.js (if you use node for frontend)
+node_modules/
+
+# Test, coverage, and build files
+coverage/
+*.cover
+*.log
+nosetests.xml
+coverage.xml
+*.hypothesis/
