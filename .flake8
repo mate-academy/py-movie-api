@@ -1,0 +1,3 @@
+[flake8]
+exclude = venv, migrations, manage.py, .gitignore, .\cinema\tests.py, .\user\tests.py
+max-line-length = 100
