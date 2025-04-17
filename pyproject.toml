@@ -1,0 +1,9 @@
+[project]
+name = "py-movie-api"
+version = "0.1.0"
+description = "A Django REST API service for managing movie information, providing CRUD operations for movie entries with details like titles, descriptions, and durations. Built with Django and Django REST Framework."
+requires-python = ">=3.13"
+dependencies = [
+    "django==5.2",
+    "djangorestframework>=3.16.0",
+]
