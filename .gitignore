@@ -1,0 +1,14 @@
+# Bytecode
+__pycache__/
+*.pyc
+
+# DB files
+*.sqlite3
+*.db3
+
+# IDE
+.idea/
+
+# Virtual environment
+venv/
+.env
