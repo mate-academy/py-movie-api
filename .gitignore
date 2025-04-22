@@ -1,0 +1,59 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyc
+*.env
+*.venv
+.env
+.venv/
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Django
+*.log
+db.sqlite3
+media/
+staticfiles/
+*.pot
+*.pyc
+
+# PyCharm
+.idea/
+
+# VS Code (про всяк випадок)
+.vscode/
+
+# macOS
+.DS_Store
+
+# mypy
+.mypy_cache/
+
+# coverage
+htmlcov/
+.coverage
+.coverage.*
+
+# pytest
+.cache/
+
+# pip
+pip-log.txt
+
+# pyenv
+.python-version
+
+# celery
+celerybeat-schedule
+
+# dotenv
+.env.*
+
+# migrations
+**/migrations/*.py
+!**/migrations/__init__.py
