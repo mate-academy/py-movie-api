@@ -3,7 +3,6 @@ venv/
 cinema/admin.py
 cinema/tests.py
 checklist.md
-README.md
 cinema_service_db_data.json
 requirements.txt
 __pycache__/
