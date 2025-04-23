@@ -4,6 +4,16 @@ cinema/admin.py
 cinema/tests.py
 checklist.md
 README.md
-db.sqlite3
 cinema_service_db_data.json
 requirements.txt
+__pycache__/
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+media
+.idea/
+.vscode/
+*.iml
+.env
+.DS_Store
+.pytest_cache/
