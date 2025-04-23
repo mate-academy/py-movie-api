@@ -1,0 +1,9 @@
+.venv/
+venv/
+cinema/admin.py
+cinema/tests.py
+checklist.md
+README.md
+db.sqlite3
+cinema_service_db_data.json
+requirements.txt
