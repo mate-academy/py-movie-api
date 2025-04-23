@@ -1,0 +1,69 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyc
+*.env
+*.env.*
+
+# Virtual environment
+.venv/
+env/
+venv/
+
+# Django
+*.log
+db.sqlite3
+media/
+staticfiles/
+local_settings.py
+
+# Migrations (опціонально — залиш, якщо не хочеш комітити міграції)
+**/migrations/
+!**/migrations/__init__.py
+
+# VS Code
+.vscode/
+
+# PyCharm
+.idea/
+*.iml
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Coverage & test reports
+htmlcov/
+.coverage
+.tox/
+.nox/
+.pytest_cache/
+.junit.xml
+
+# dotenv
+.env
+.env.*
+
+# Node.js (якщо є front)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+dist/
+
+# Build
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
