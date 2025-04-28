@@ -1,0 +1,6 @@
+[flake8]
+exclude =
+    docs,
+    */migrations/*,
+    venv/*
+    movie_api/*
