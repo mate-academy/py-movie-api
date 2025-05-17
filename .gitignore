@@ -1,0 +1,54 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*$py.class
+
+# Virtual Environments
+venv/
+.venv/
+env/
+.env/
+
+# Environment variables / secrets
+*.env
+*.secret
+.env.*
+
+# Django stuff
+*.sqlite3
+db.sqlite3
+/media/
+/staticfiles/
+*.log
+
+# Django migrations (по желанию — можно убрать, если хочешь отслеживать миграции)
+**/migrations/*.py
+!**/migrations/__init__.py
+
+# PyCharm
+.idea/
+
+# VS Code (если вдруг используешь)
+.vscode/
+
+# Coverage / test outputs
+.coverage
+htmlcov/
+.tox/
+.noseids
+.pytest_cache/
+coverage.xml
+
+# MyPy / Type checking
+.mypy_cache/
+.dmypy.json
+.pyre/
+
+# macOS / Linux / Windows системные
+.DS_Store
+Thumbs.db
+desktop.ini
+
+db.sqlite3

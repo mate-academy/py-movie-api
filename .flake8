@@ -1,0 +1,26 @@
+[flake8]
+# Максимально допустимая длина строки
+max-line-length = 88
+
+# Игнорируемые ошибки (чаще всего с black)
+ignore =
+    E203,
+    W503
+
+# Исключаем определённые директории и файлы (в том числе миграции и settings.py)
+exclude =
+    .git,
+    __pycache__,
+    env/,
+    venv/,
+    .venv/,
+    migrations/,
+    static/,
+    media/,
+    .idea/,
+    .vscode/,
+    **/migrations/*.py,
+    **/settings.py
+
+# Проверяем только .py-файлы
+filename = *.py
