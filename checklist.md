@@ -1,10 +1,10 @@
 # Check Your Code Against the Following Points
 
-## Don't forget to add `.gitignore` file BEFORE pushing
+## Don"t forget to add `.gitignore` file BEFORE pushing
 
-Make sure you don't push DB files (files with `.sqlite`, `.db3`, etc. extension).
+Make sure you don"t push DB files (files with `.sqlite`, `.db3`, etc. extension).
 
-Make sure you don't push `.pyc`, `.idea` files.
+Make sure you don"t push `.pyc`, `.idea` files.
 
 
 ## Code Style
@@ -13,7 +13,7 @@ Make sure you don't push `.pyc`, `.idea` files.
 
 Good example:
 ```python
-if request.method == 'POST':
+if request.method == "POST":
     serializer = MovieSerializer(data=request.data)
     serializer.is_valid(raise_exception=True)
     serializer.save()
@@ -22,7 +22,7 @@ if request.method == 'POST':
 
 Bad example:
 ```python
-if request.method == 'POST':
+if request.method == "POST":
     serializer = MovieSerializer(data=request.data)
     if serializer.is_valid():
         serializer.save()
@@ -48,7 +48,7 @@ if request.method == "GET":
     return Response(serializer.data)
 ```
 
-3. If you specify `max_length` then it's more reasonable 
+3. If you specify `max_length` then it"s more reasonable 
 to use `CharField` instead of `TextField`:
 
 Good example:
@@ -83,13 +83,13 @@ urlpatterns = [
 ]
 ```
 
-5. Make sure you catch an error in `@api_view` in case that object doesn't exist. 
+5. Make sure you catch an error in `@api_view` in case that object doesn"t exist. 
 Use `get_object_or_404` instead of `try`/`except` for this purpose.
 
-6. Make sure you've added a blank line at the end of all your files.
+6. Make sure you"ve added a blank line at the end of all your files.
 7. A serializer field is required by default. ([DRF required documentation](https://www.django-rest-framework.org/api-guide/fields/#required))
-8. Your project should be one-styled, don't use double and single quotes at the same time. Double quotes are preferred.
+8. Your project should be one-styled, don"t use double and single quotes at the same time. Double quotes are preferred.
 
 ## Clean Code
 Add comments, prints, and functions to check your solution when you write your code. 
-Don't forget to delete them when you are ready to commit and push your code.
+Don"t forget to delete them when you are ready to commit and push your code.
