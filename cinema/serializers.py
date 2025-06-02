@@ -23,5 +23,9 @@ class MovieSerializer(serializers.ModelSerializer):
             "description",
             instance.description
         )
+        instance. duration = validated_data.get(
+            "duration",
+            instance.duration
+        )
         instance.save()
         return instance
