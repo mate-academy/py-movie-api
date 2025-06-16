@@ -1,3 +1,4 @@
+from django.template.defaultfilters import title
 from rest_framework import serializers
 from cinema.models import Movie
 
@@ -16,10 +17,10 @@ class MovieSerializer(serializers.ModelSerializer):
         return Movie.objects.create(**validated_data)
 
     def update(self, instance, validated_data):
-        validated_data.get("title", instance.title)
+        title= validated_data.get("title", instance.title)
         instance.description = validated_data.get(
             "description", instance.description
         )
-        validated_data.get("duration", instance.duration)
+        duration = validated_data.get("duration", instance.duration)
         instance.save()
         return instance
