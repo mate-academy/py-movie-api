@@ -4,33 +4,33 @@ from rest_framework.response import Response
 from rest_framework import status
 
 from .models import Movie
-from .serializers import BusSerializer
+from .serializers import MovieSerializer
 
 
 @api_view(["GET", "POST"])
 def movie_list(request):
     if request.method == "GET":
         movies = Movie.objects.all()
-        serializer = BusSerializer(movies, many=True)
+        serializer = MovieSerializer(movies, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
     else:
-        serializer = BusSerializer(data=request.data)
+        serializer = MovieSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         serializer.save()
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        return Response(serializer.errors, status=status.HTTP_201_CREATED)
 
 
 @api_view(["GET", "PUT", "DELETE"])
 def movie_detail(request, pk):
     movie = get_object_or_404(Movie, pk=pk)
     if request.method == "GET":
-        serializer = BusSerializer(movie)
+        serializer = MovieSerializer(movie)
         return Response(serializer.data, status=status.HTTP_200_OK)
     elif request.method == "PUT":
-        serializer = BusSerializer(movie, data=request.data)
+        serializer = MovieSerializer(movie, data=request.data)
         serializer.is_valid(raise_exception=True)
         serializer.save()
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        return Response(serializer.errors, status=status.HTTP_200_OK)
     else:
         movie.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)

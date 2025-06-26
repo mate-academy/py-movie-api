@@ -2,7 +2,7 @@ from rest_framework import serializers
 from .models import Movie
 
 
-class BusSerializer(serializers.Serializer):
+class MovieSerializer(serializers.Serializer):
     id = serializers.IntegerField(read_only=True)
     title = serializers.CharField(required=False, max_length=255)
     description = serializers.CharField(required=True)
