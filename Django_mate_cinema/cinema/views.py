@@ -1,4 +1,5 @@
 from rest_framework.decorators import api_view
+from rest_framework.generics import get_object_or_404
 from rest_framework.response import Response
 from .models import Movie
 from .serializers import MovieSerializer
@@ -21,12 +22,11 @@ def movie_list(request):
 
 @api_view(['GET', 'PUT', 'DELETE'])
 def movie_detail(request, pk):
-    movie = Movie.objects.get(id=pk)
+    movie = get_object_or_404(Movie, pk=pk)
     if request.method == 'GET':
         serializer = MovieSerializer(movie)
         return Response(serializer.data, status=200)
     elif request.method == 'PUT':
-        movie = Movie.objects.get(id=pk)
         serializer = MovieSerializer(movie, data=request.data)
         if serializer.is_valid():
             serializer.save()
