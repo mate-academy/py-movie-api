@@ -7,7 +7,6 @@ from cinema.models import Movie
 from cinema.serializers import MovieSerializer
 
 
-# Create your views here.
 @api_view(["GET", "POST"])
 def movie_list(request):
     if request.method == "GET":
@@ -17,6 +16,7 @@ def movie_list(request):
     else:
         serializer = MovieSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
+        serializer.save()
         return Response(data=serializer.data, status=status.HTTP_201_CREATED)
 
 
@@ -24,7 +24,7 @@ def movie_list(request):
 def movie_detail(request, pk):
     movie = get_object_or_404(Movie, pk=pk)
     if request.method == "GET":
-        serializer = MovieSerializer(movie, data=request.data)
+        serializer = MovieSerializer(movie)
         return Response(data=serializer.data, status=status.HTTP_200_OK)
     elif request.method == "PUT":
         serializer = MovieSerializer(movie, data=request.data)
