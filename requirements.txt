@@ -1,0 +1,8 @@
+asgiref==3.9.1
+Django==5.2.5
+djangorestframework==3.16.1
+flake8==7.3.0
+mccabe==0.7.0
+pycodestyle==2.14.0
+pyflakes==3.4.0
+sqlparse==0.5.3
