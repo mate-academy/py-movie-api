@@ -1,3 +1,40 @@
-from django.shortcuts import render
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from rest_framework.request import Request
+from rest_framework import status
+from django.shortcuts import get_object_or_404
 
-# Create your views here.
+from cinema.models import Movie
+from cinema.serializers import MovieSerializer
+
+
+@api_view(["GET", "POST"])
+def movie_list_view(request: Request) -> Response:
+    if request.method == "GET":
+        serializer = MovieSerializer(Movie.objects.all(), many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+    
+    elif request.method == "POST":
+        serializer = MovieSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data, status=status.HTTP_201_CREATED)        
+
+
+@api_view(["GET", "PUT", "DELETE"])
+def movie_detail_view(request: Request, pk: int) -> Response:
+    movie = get_object_or_404(Movie, pk=pk)
+
+    if request.method == "GET":
+        serializer = MovieSerializer(movie)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+    elif request.method == "PUT":
+        serializer = MovieSerializer(movie, data=request.data, partial=True)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+    elif request.method == "DELETE":
+        movie.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
