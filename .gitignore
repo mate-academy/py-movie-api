@@ -1,0 +1,18 @@
+# Django
+*.sqlite*
+*.db3
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.idea/
+.venv/
+.env
+.DS_Store
+*.log
+
+# VSCode
+.vscode/
+
+# System
+Thumbs.db
