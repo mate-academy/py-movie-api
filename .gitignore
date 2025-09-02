@@ -1,0 +1,22 @@
+# Python
+*.pyc
+__pycache__/
+*.pyo
+*.pyd
+
+# Virtual environment
+.venv/
+
+# Django
+db.sqlite3
+*.log
+*.pot
+*.mo
+*.sqlite3
+
+# Migrations
+cinema/migrations/
+
+# VSCode / PyCharm
+.vscode/
+.idea/
