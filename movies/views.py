@@ -18,7 +18,7 @@ def movie_list(request):
         return Response(serializer.data, status=status.HTTP_200_OK)
 
     elif request.method == "POST":
-        data = JSONParser.parse(request)
+        data = request.data
         serializer = MovieSerializer(data=data)
         serializer.is_valid(raise_exception=True)
         serializer.save()
