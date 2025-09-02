@@ -25,13 +25,13 @@ def cinema_list(request):
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
 
-@api_view(["GET", "POST", "DELETE"])
+@api_view(["GET", "PUT", "DELETE"])
 def movie_detail(request, pk):
     movie = get_object_or_404(Movie, pk=pk)
     if request.method == "GET":
         serializer = MovieSerializer(movie)
         return Response(serializer.data, status=status.HTTP_200_OK)
-    elif request.method == "POST":
+    elif request.method == "PUT":
         serializer = MovieSerializer(movie, data=request.data)
         serializer.is_valid(raise_exception=True)
         serializer.save()
