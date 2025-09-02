@@ -1,44 +1,44 @@
+from django.contrib.staticfiles.storage import staticfiles_storage
 from django.http import HttpResponse, JsonResponse
-from django.views.decorators.csrf import csrf_exempt
+from rest_framework.decorators import api_view
 from rest_framework.generics import get_object_or_404
 from rest_framework.parsers import JSONParser
+from rest_framework import status
+from rest_framework.response import Response
 
 from .models import Movie
 from .serializers import MovieSerializer
 
 
-@csrf_exempt
+@api_view(["GET"])
 def movie_list(request):
-    if request.method == 'GET':
+    if request.method == "GET":
         movies = Movie.objects.all()
         serializer = MovieSerializer(movies, many=True)
-        return JsonResponse(serializer.data, safe=False)
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
-    elif request.method == 'POST':
+    elif request.method == "POST":
         data = JSONParser.parse(request)
         serializer = MovieSerializer(data=data)
-        if serializer.is_valid():
-            serializer.save()
-            return JsonResponse(serializer.data, status=201)
-        return JsonResponse(serializer.errors, status=400)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
 
 
-@csrf_exempt
+@api_view(["GET", "PUT", "DELETE"])
 def movie_detail(request, pk):
     movie = get_object_or_404(Movie, pk=pk)
 
-    if request.method == 'GET':
+    if request.method == "GET":
         serializer = MovieSerializer(movie)
-        return JsonResponse(serializer.data)
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
-    elif request.method == 'PUT':
-        data = JSONParser.parse(request)
-        serializer = MovieSerializer(data=data)
-        if serializer.is_valid():
-            serializer.save()
-            return JsonResponse(serializer.data, status=200)
-        return JsonResponse(serializer.errors, status=400)
+    elif request.method == "PUT":
+        serializer = MovieSerializer(movie, data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
-    elif request.method == 'DELETE':
+    else:
         movie.delete()
-        return HttpResponse(status=204)
+        return Response(status=status.HTTP_204_NO_CONTENT)

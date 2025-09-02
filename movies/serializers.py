@@ -8,10 +8,11 @@ from movies.models import Movie
 #         model = Movie
 #         fields = ["id", "title", "description", "duration"]
 
+
 class MovieSerializer(serializers.Serializer):
     id = serializers.IntegerField(read_only=True)
     title = serializers.CharField(max_length=100)
-    description = serializers.CharField(max_length=200)
+    description = serializers.CharField()
     duration = serializers.IntegerField()
 
     def create(self, validated_data):
@@ -19,8 +20,8 @@ class MovieSerializer(serializers.Serializer):
         return movie
 
     def update(self, instance, validated_data):
-        instance.title = validated_data.get('title', instance.title)
+        instance.title = validated_data.get("title", instance.title)
         instance.description = validated_data.get("description", instance.description)
-        instance.duration = validated_data.get('duration', instance.duration)
+        instance.duration = validated_data.get("duration", instance.duration)
         instance.save()
         return instance
