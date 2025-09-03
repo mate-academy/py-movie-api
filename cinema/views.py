@@ -25,7 +25,7 @@ def movie(request, pk) -> Response|None:
         serializer = MovieSerializer(movie)
         return Response(serializer.data, status=status.HTTP_200_OK)
     elif request.method == "PUT":
-        serializer = MovieSerializer(data=request.data)
+        serializer = MovieSerializer(instanse=movie, data=request.data)
         serializer.is_valid(raise_exception=True)
         serializer.save()
         return Response(serializer.data, status=status.HTTP_200_OK)
