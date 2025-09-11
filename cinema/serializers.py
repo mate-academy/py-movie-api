@@ -3,10 +3,10 @@ from .models import Movie
 
 
 class MovieSerializer(serializers.Serializer):
-    id = serializers.IntegerField()
-    title = serializers.CharField()
-    description = serializers.CharField()
-    duration = serializers.IntegerField()
+    id = serializers.IntegerField(required=True)
+    title = serializers.CharField(required=True)
+    description = serializers.CharField(required=True)
+    duration = serializers.IntegerField(required=True)
 
     def create(self, validated_data):
         return Movie.objects.create(**validated_data)
