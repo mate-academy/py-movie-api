@@ -1,0 +1,14 @@
+*.sqlite
+*.sqlite3
+*.db
+*.db3
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.idea/
+.vscode/
+*.iml
+venv/
+.env
+.DS_Store
