@@ -1,0 +1,38 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.pyc
+*.pyd
+*.pyo
+*.egg-info/
+.eggs/
+
+# Virtual environment
+venv/
+.venv/
+env/
+.env/
+
+# Distribution / build files
+dist/
+build/
+*.egg
+*.whl
+
+# Editor-specific files
+.vscode/ # VS Code settings
+.idea/ # PyCharm settings
+*.swp # Vim swap files
+
+# Operating System files
+.DS_Store # macOS
+Thumbs.db # Windows
+
+# Miscellaneous
+*.log
+*.sqlite3 # SQLite database files, if not intended for version control
+
+# Database files
+*.sqlite
+*.sqlite3
+*.db
+*.db3
