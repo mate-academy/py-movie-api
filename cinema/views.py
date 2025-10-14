@@ -4,7 +4,7 @@ from rest_framework.response import Response
 from rest_framework import status
 
 from cinema.models import Movie
-from cinema.serializees import MovieSerializer
+from cinema.serializers import MovieSerializer
 
 @api_view(["GET", "POST"])
 def movie_list(request):
