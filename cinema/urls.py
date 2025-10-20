@@ -1,5 +1,3 @@
-from tkinter.font import names
-
 from django.urls import path
 from cinema.views import movies_list, movies_detail
 
