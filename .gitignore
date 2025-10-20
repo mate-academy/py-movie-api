@@ -1,0 +1,104 @@
+=======================================
+🐍 PYTHON / DJANGO REST FRAMEWORK
+=======================================
+--- Ambientes virtuais ---
+
+venv/
+env/
+.venv/
+ENV/
+
+--- Arquivos de cache e compilados ---
+
+pycache/
+*.py[cod]
+*$py.class
+
+--- Banco de dados local ---
+
+db.sqlite3
+*.sqlite3
+
+--- Arquivos de configuração locais ---
+
+*.env
+*.local
+*.ini
+*.cfg
+*.toml
+.secret
+.env.
+
+--- Mídia e uploads locais ---
+
+media/
+uploads/
+staticfiles/
+static_root/
+tmp/
+
+--- Logs ---
+
+*.log
+.log.
+logs/
+debug.log
+
+--- Cobertura de testes ---
+
+.coverage
+htmlcov/
+.tox/
+.nox/
+.coverage.*
+.pytest_cache/
+
+--- Migrations cache ---
+
+**/migrations/pycache/
+
+--- IDEs / Editores ---
+
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+*.code-workspace
+
+--- Sistemas operacionais ---
+
+.DS_Store
+Thumbs.db
+desktop.ini
+
+--- Build / Distribuição ---
+
+build/
+dist/
+*.egg-info/
+.eggs/
+MANIFEST
+
+--- Docker / Containers ---
+
+*.pid
+docker-compose.override.yml
+.env.docker
+docker-data/
+
+--- Testes e relatórios ---
+
+junit.xml
+coverage.xml
+test-results/
+pytestdebug.log
+
+--- Node / frontend ---
+
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+pnpm-lock.yaml
+dist/
