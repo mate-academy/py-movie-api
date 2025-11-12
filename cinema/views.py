@@ -6,27 +6,40 @@ from rest_framework.views import status
 from cinema.models import Movie
 from cinema.serializers import MovieSerializer
 
+
 @api_view(["GET", "POST"])
 def movie_list(request):
+    """
+    Handle GET and POST requests for movie list.
+    :param request:
+    :return:
+    """
     if request.method == "GET":
         movies = Movie.objects.all()
         serializer = MovieSerializer(movies, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
     else:
         serializer = MovieSerializer(data=request.data)
-        if serializer.is_valid(raise_exception=True ):
+        if serializer.is_valid(raise_exception=True):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
 
+
 @api_view(["GET", "PUT", "DELETE"])
 def movie_detail(request, pk):
+    """
+    HAndle GET, PUT, DELETE requests for single movie.
+    :param request:
+    :param pk:
+    :return:
+    """
     movie = get_object_or_404(Movie, pk=pk)
     if request.method == "GET":
         serializer = MovieSerializer(movie)
         return Response(serializer.data, status=status.HTTP_200_OK)
     elif request.method == "PUT":
         serializer = MovieSerializer(movie, data=request.data)
-        if serializer.is_valid(raise_exception=True ):
+        if serializer.is_valid(raise_exception=True):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_200_OK)
     else:

@@ -1,0 +1,4 @@
+[flake8]
+exclude = migrations,*/migrations/*
+per-file-ignores =
+    */migrations/*.py: E501
