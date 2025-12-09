@@ -1,0 +1,50 @@
+# === Python ===
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg-info/
+*.egg
+
+# === Django ===
+db.sqlite3
+media/
+staticfiles/
+
+# === Environments ===
+.env
+.venv/
+venv/
+ENV/
+env/
+.venv.bak/
+venv.bak/
+
+# === IDE ===
+# JetBrains (PyCharm, IntelliJ IDEA)
+.idea/
+
+# VSCode
+.vscode/
+
+# === Logs & Coverage ===
+*.log
+*.pot
+*.py,cover
+.coverage
+coverage/
+*.mo
+
+# === Build & Dist ===
+build/
+dist/
+.eggs/
+
+# === System files ===
+.DS_Store
+Thumbs.db
+
+# === Files for develop ===
+main.ipynb
+.flake8
