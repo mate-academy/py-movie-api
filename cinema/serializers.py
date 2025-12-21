@@ -8,17 +8,6 @@ class MovieSerializer(serializers.ModelSerializer):
     description = serializers.CharField(max_length=1000)
     duration = serializers.IntegerField()
 
-    def create(self, validated_data):
-        return Movie.objects.create(**validated_data)
-
-    def update(self, instance, validated_data):
-        instance.title = validated_data.get('title', instance.title)
-        instance.description = validated_data.get('description',
-                                                  instance.description)
-        instance.duration = validated_data.get('duration', instance.duration)
-        instance.save()
-        return instance
-
     class Meta:
         model = Movie
         fields = ["id", "title", "description", "duration"]
