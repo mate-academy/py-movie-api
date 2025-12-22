@@ -13,3 +13,4 @@ class Movie(models.Model):
         return (f"Movie: {self.title}, "
                 f"description: {self.description}, "
                 f"duration: {self.duration}")
+

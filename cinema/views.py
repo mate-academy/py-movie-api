@@ -33,3 +33,4 @@ def movie_detail(request, pk) -> Response:
     else:
         movie.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
