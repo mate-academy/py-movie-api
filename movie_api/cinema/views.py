@@ -33,7 +33,7 @@ def movies_list(request, pk=None):
         serializer = MovieSerializer(movie, data=request.data)
         serializer.is_valid(raise_exception=True)
         serializer.save()
-        return Response(serializer.data, status=201)
+        return Response(serializer.data, status=status.HTTP_200_OK)
     
     if request.method == "DELETE":
         movie = get_object_or_404(Movie, pk=pk)
