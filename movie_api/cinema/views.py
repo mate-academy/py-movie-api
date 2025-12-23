@@ -20,9 +20,6 @@ def movies_list(request, pk=None):
             return Response(serializer.data, status=status.HTTP_200_OK)
     
     if request.method == "POST":
-        if not pk:
-            return Response(status=status.HTTP_405_METHOD_NOT_ALLOWED)
-        serializer = MovieSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         serializer.save()
         return Response(
@@ -33,7 +30,7 @@ def movies_list(request, pk=None):
     if request.method == "PUT":
         if not pk:
             return Response(status=status.HTTP_405_METHOD_NOT_ALLOWED)
-        movie = Movie.objects.get(pk=pk)
+        movie = get_object_or_404(Movie, pk=pk)
         serializer = MovieSerializer(movie, data=request.data)
         serializer.is_valid(raise_exception=True)
         serializer.save()
@@ -42,6 +39,6 @@ def movies_list(request, pk=None):
     if request.method == "DELETE":
         if not pk:
             return Response(status=status.HTTP_405_METHOD_NOT_ALLOWED)
-        movie = Movie.objects.get(pk=pk)
+        movie = get_object_or_404(Movie, pk=pk)
         movie.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
