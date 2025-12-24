@@ -86,9 +86,8 @@ urlpatterns = [
 5. Make sure you catch an error in `@api_view` in case that object doesn't exist. 
 Use `get_object_or_404` instead of `try`/`except` for this purpose.
 
-6. Make sure you've added a blank line at the end of all your files.
-7. A serializer field is required by default. ([DRF required documentation](https://www.django-rest-framework.org/api-guide/fields/#required))
-8. Your project should be one-styled, don't use double and single quotes at the same time. Double quotes are preferred.
+6. A serializer field is required by default. ([DRF required documentation](https://www.django-rest-framework.org/api-guide/fields/#required))
+7. Your project should be one-styled, don't use double and single quotes at the same time. Double quotes are preferred.
 
 ## Clean Code
 Add comments, prints, and functions to check your solution when you write your code. 
