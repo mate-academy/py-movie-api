@@ -7,3 +7,4 @@ urlpatterns = [
     path("cinema/movies/", movie_list, name="movie_list"),
     path("cinema/movies/<int:pk>/", movie_detail, name="movie_detail"),
 ]
+
