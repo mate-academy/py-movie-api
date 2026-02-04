@@ -1,0 +1,32 @@
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+.env
+.venv
+env/
+venv/
+ENV/
+build/
+dist/
+
+# --- Django ---
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+media/
+staticfiles/
+
+# --- PyCharm (JetBrains) ---
+.idea/
+
+# --- Linux (Mint/Cinnamon) ---
+.directory
+.DS_Store
+*.swp
+
+# --- Django Rest Framework ---
+# Jeśli używasz dodatkowych paczek do dokumentacji (np. drf-spectacular)
+schema.yml
+schema.json
