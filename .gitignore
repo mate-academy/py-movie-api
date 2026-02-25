@@ -1,0 +1,17 @@
+# Python bytecode
+*.pyc
+__pycache__/
+
+# IDE / editor
+.idea/
+
+# Database
+db.sqlite3
+*.sqlite
+*.db3
+
+# Django migrations
+cinema/migrations/
+
+# Virtual environment
+venv/
