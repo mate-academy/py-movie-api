@@ -14,10 +14,10 @@ class MovieList(APIView):
 
     def post(self, request):
         serializer = MovieSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        # Автоматично викидає помилку 400, якщо дані невалідні
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
 
 class MovieDetail(APIView):
     def get(self, request, pk):
@@ -28,10 +28,10 @@ class MovieDetail(APIView):
     def put(self, request, pk):
         movie = get_object_or_404(Movie, pk=pk)
         serializer = MovieSerializer(movie, data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_200_OK)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        # Автоматично викидає помилку 400, якщо дані невалідні
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
     def delete(self, request, pk):
         movie = get_object_or_404(Movie, pk=pk)
