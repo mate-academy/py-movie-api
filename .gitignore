@@ -1,0 +1,5 @@
+*.sqlite3
+__pychache__/
+.idea/
+.idea
+*.pyc
