@@ -1,0 +1,6 @@
+db.sqlite3
+.pyc
+.idea
+.venv
+.sqlite
+.db3
