@@ -1,0 +1,26 @@
+# Virtual environment
+venv/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Database
+db.sqlite3
+
+# Environment files
+.env
+
+# Logs
+*.log
+
+# Static & media (якщо генерується локально)
+staticfiles/
+media/
+
+# IDE / OS files
+.vscode/
+.idea/
+.DS_Store
