@@ -1,0 +1,43 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Virtual environment
+venv/
+.env
+.env.*
+
+# Django
+*.log
+db.sqlite3
+media/
+
+# Static files
+staticfiles/
+
+# IDE
+.idea/
+.vscode/
+
+# OS
+.DS_Store
+
+# Migrations (інколи залишають, але можна ігнорити якщо треба)
+# cinema/migrations/*.py
+# !cinema/migrations/__init__.py
+
+# PyCharm
+*.iml
+
+# Coverage
+.coverage
+htmlcov/
+
+# pytest
+.pytest_cache/
+
+# mypy
+.mypy_cache/
+
