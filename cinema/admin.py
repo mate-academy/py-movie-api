@@ -4,4 +4,8 @@ from cinema.models import Movie
 
 @admin.register(Movie)
 class MovieAdmin(admin.ModelAdmin):
-    list_display = ("id", "description", "title", )
+    list_display = (
+        "id",
+        "description",
+        "title",
+    )

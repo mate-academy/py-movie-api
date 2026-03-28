@@ -6,17 +6,17 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('cinema', '0001_initial'),
+        ("cinema", "0001_initial"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='movie',
-            name='duration',
+            model_name="movie",
+            name="duration",
             field=models.CharField(max_length=100),
         ),
         migrations.AlterModelTable(
-            name='movie',
-            table='movie',
+            name="movie",
+            table="movie",
         ),
     ]
