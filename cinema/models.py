@@ -11,3 +11,4 @@ class Movie(models.Model):
 
     def __str__(self):
         return f"Movie: {self.title} ({self.duration} minutes)"
+
