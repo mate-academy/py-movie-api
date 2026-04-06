@@ -9,6 +9,5 @@ class Movie(models.Model):
     class Meta:
         verbose_name_plural = "movies"
 
-
     def __str__(self):
         return f"{self.title} ({self.duration} min)"
