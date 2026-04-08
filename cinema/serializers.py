@@ -19,7 +19,7 @@ from cinema.models import Movie
        # return instance
 
 class MovieSerializer(serializers.ModelSerializer):
-    title = serializers.CharField(source='title', read_only=True)
-    description = serializers.CharField(source='description', read_only=True)
-    duration = serializers.CharField(source='duration', read_only=True)
+    title = serializers.CharField(source="title", read_only=True)
+    description = serializers.CharField(source="description", read_only=True)
+    duration = serializers.CharField(source="duration", read_only=True)
 
