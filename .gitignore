@@ -1,5 +1,6 @@
-.pyc
-.idea
-.sqlite
-.db3
+*.pyc
+__pycache__/
+.idea/
+*.sqlite
+*.db3
 db.sqlite3
