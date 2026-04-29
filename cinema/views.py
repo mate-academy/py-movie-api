@@ -36,4 +36,4 @@ def movie_detail(request, pk):
     elif request.method == "DELETE":
         cinema = get_object_or_404(Movie, pk=pk)
         cinema.delete()
-        return Response(status=status.HTTP_200_OK)
+        return Response(status=status.HTTP_204_NO_CONTENT)
