@@ -1,0 +1,13 @@
+venv/
+ENV/
+env/
+
+db.sqlite3
+
+__pycache__/
+*.py[cod]
+
+.idea/
+.vscode/
+
+cinema_service_db_data.json
