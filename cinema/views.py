@@ -1,4 +1,3 @@
-from django.db.models import Model
 from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.generics import get_object_or_404
@@ -19,6 +18,7 @@ def movies_list(request):
         serializer.is_valid(raise_exception=True)
         serializer.save()
         return Response(serializer.data, status=status.HTTP_201_CREATED)
+
 
 @api_view(["GET", "PUT", "DELETE"])
 def movies_detail(request, pk):
