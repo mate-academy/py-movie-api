@@ -1,0 +1,4 @@
+django
+djangorestframework
+black
+flake8
