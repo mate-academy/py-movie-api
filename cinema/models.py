@@ -8,4 +8,3 @@ class Movie(models.Model):
 
     def __str__(self):
         return f"{self.title}: {self.description}  (Time: {self.duration})"
-
