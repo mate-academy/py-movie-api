@@ -7,6 +7,6 @@ from cinema.views import (
 app_name = 'cinema'
 
 urlpatterns = [
-    path("api/cinema/movies/", cinema_list, name="cinema_list"),
-    path("api/cinema/movies/<pk>/", cinema_detail, name="cinema_delete"),
+    path("movies/", cinema_list, name="cinema_list"),
+    path("movies/<pk>/", cinema_detail, name="cinema_delete"),
 ]
