@@ -6,3 +6,6 @@ class Movie(models.Model):
     description = models.TextField()
     duration = models.TimeField()
 
+    def __str__(self):
+        return f"{self.title}: {self.description}  (Time: {self.duration})"
+
