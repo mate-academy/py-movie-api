@@ -1,0 +1,20 @@
+[
+  {
+    "model": "cinema.movie",
+    "pk": 1,
+    "fields": {
+      "title": "The Shawshank Redemption",
+      "description": "Two imprisoned men bond over a number of years.",
+      "duration": 142
+    }
+  },
+  {
+    "model": "cinema.movie",
+    "pk": 2,
+    "fields": {
+      "title": "Inception",
+      "description": "A thief enters dreams to steal and plant ideas.",
+      "duration": 148
+    }
+  }
+]
