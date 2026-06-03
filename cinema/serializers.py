@@ -3,7 +3,7 @@ from cinema.models import Movie
 
 
 class MovieSerializer(serializers.Serializer):
-    id =serializers.IntegerField(read_only=True)
+    id = serializers.IntegerField(read_only=True)
     description = serializers.CharField(required=False, max_length=255)
     duration = serializers.TimeField()
 
