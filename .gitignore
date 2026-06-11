@@ -382,3 +382,4 @@ pyrightconfig.json
 .db3
 .pyc
 .idea
+.migra
