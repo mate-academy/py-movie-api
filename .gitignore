@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pdb
+*.egg-info/
+*.log
+
+# Virtual environment
+venv/
+.env/
+
+# Databases
+*.sqlite3
+*.db3
+
+# Django static/media
+/staticfiles/
+/media/
+
+# IDE / Editor
+.idea/
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Migrations (залишати тільки потрібні)
+*/migrations/__pycache__/
