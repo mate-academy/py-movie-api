@@ -38,7 +38,7 @@ def movie_detail(request, pk):
             serializer.save()
             return JsonResponse(serializer.data, status=201)
         else:
-            JsonResponse(serializer.errors, status=400)
+            return JsonResponse(serializer.errors, status=400)
     elif request.method == "DELETE":
         movie = get_object_or_404(Movie, pk=pk)
         movie.delete()
