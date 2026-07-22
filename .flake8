@@ -1,0 +1,20 @@
+[flake8]
+extend-ignore = E203
+exclude =
+    .git,
+    __pycache__,
+    docs/source/conf.py,
+    old,
+    build,
+    dist,
+    .venv,
+    .env,
+    venv,
+    migrations,
+    .idea,
+    .vscode,
+    *.iml,
+    .DS_Store,
+    .pytest_cache
+max-complexity = 10
+max-line-length = 88
