@@ -18,3 +18,4 @@ exclude =
     .pytest_cache
 max-complexity = 10
 max-line-length = 88
+inline-quotes = double
