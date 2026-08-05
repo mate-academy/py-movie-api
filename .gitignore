@@ -1,0 +1,17 @@
+# Python
+*.pyc
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.venv/
+
+# Database
+*.sqlite3
+*.db3
+
+# IDE / Editors
+.idea/
+.vscode/
+*.swp
+*.swo
