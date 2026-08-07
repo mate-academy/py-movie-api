@@ -1,4 +1,4 @@
-from django.contrib.sessions import serializers
+from rest_framework import serializers
 from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.generics import get_object_or_404
@@ -18,8 +18,9 @@ def movie_list(request):
         serializer = MovieSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         serializer.save()
-        return Response(serializers.data,
+        return Response(serializer.data,
                         status=status.HTTP_201_CREATED)
+
 
 @api_view(["GET", "PUT", "DELETE"])
 def movie_detail(request, pk):
