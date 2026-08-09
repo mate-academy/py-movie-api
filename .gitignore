@@ -1,0 +1,37 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.typed
+*.so
+*.pyd
+
+# Virtual Environment
+venv/
+.venv/
+env/
+ENV/
+
+# Database
+*.sqlite3
+db.sqlite3
+
+# Django Specific
+media/
+staticfiles/
+local_settings.py
+
+# Environment Variables (Secrets)
+.env
+.env.1
+.env.local
+.env.development
+.env.test
+.env.production
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDEs
+.vscode/
+.idea/
