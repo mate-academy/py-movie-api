@@ -12,20 +12,18 @@ def cinema_list(request):
     if request.method == "GET":
         movies = Movie.objects.all()
         serializer = CinemaSerializer(movies, many=True)
-        return Response(serializer.data, status=status.HTTP_200_OK)
-
-    serializer = CinemaSerializer(data=request.data)
-
-    if serializer.is_valid():
-        serializer.save()
         return Response(
             serializer.data,
-            status=status.HTTP_201_CREATED
+            status=status.HTTP_200_OK
         )
 
+    serializer = CinemaSerializer(data=request.data)
+    serializer.is_valid(raise_exception=True)
+    serializer.save()
+
     return Response(
-        serializer.errors,
-        status=status.HTTP_400_BAD_REQUEST
+        serializer.data,
+        status=status.HTTP_201_CREATED
     )
 
 
@@ -35,26 +33,27 @@ def cinema_detail(request, pk):
 
     if request.method == "GET":
         serializer = CinemaSerializer(movie)
+
         return Response(
             serializer.data,
             status=status.HTTP_200_OK
         )
 
-    elif request.method == "PUT":
-        serializer = CinemaSerializer(movie, data=request.data)
-
-        if serializer.is_valid():
-            serializer.save()
-            return Response(
-                serializer.data,
-                status=status.HTTP_200_OK
-            )
+    if request.method == "PUT":
+        serializer = CinemaSerializer(
+            movie,
+            data=request.data
+        )
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
 
         return Response(
-            serializer.errors,
-            status=status.HTTP_400_BAD_REQUEST
+            serializer.data,
+            status=status.HTTP_200_OK
         )
 
-    else:
-        movie.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
+    movie.delete()
+
+    return Response(
+        status=status.HTTP_204_NO_CONTENT
+    )
