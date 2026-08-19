@@ -8,6 +8,10 @@ class MovieSerializer(serializers.ModelSerializer):
     description = serializers.CharField(required=True)
     duration = serializers.IntegerField(required=True)
 
+    class Meta:
+        model = Movie
+        fields = "__all__"
+
     def create(self, validated_data):
         return Movie.objects.create(**validated_data)
 
