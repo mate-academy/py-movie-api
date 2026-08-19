@@ -19,6 +19,7 @@ def movie_list(request):
         serializer.save()
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
+
 @api_view(["GET", "PUT", "PATCH", "DELETE"])
 def movie_detail(request, pk):
     movie = get_object_or_404(Movie, pk=pk)
