@@ -17,4 +17,3 @@ urlpatterns = [
         name="movie-detail",
     ),
 ]
-
