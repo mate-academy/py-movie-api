@@ -1,0 +1,1 @@
+"""Cinema service project package."""
