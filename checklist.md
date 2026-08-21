@@ -13,7 +13,7 @@ Make sure you don't push `.pyc`, `.idea` files.
 
 Good example:
 ```python
-if request.method == 'POST':
+if request.method == "POST":
     serializer = MovieSerializer(data=request.data)
     serializer.is_valid(raise_exception=True)
     serializer.save()
@@ -22,7 +22,7 @@ if request.method == 'POST':
 
 Bad example:
 ```python
-if request.method == 'POST':
+if request.method == "POST":
     serializer = MovieSerializer(data=request.data)
     if serializer.is_valid():
         serializer.save()
@@ -70,17 +70,13 @@ class Book(models.Model):
 Good example:
 
 ```python
-urlpatterns = [
-    path("movies/<pk>/", movie_detail, name="movie-detailed")
-]
+urlpatterns = [path("movies/<pk>/", movie_detail, name="movie-detailed")]
 ```
 
 Bad example:
 
 ```python
-urlpatterns = [
-    path("movies/<pk>", movie_detail, name="movie-detailed")
-]
+urlpatterns = [path("movies/<pk>", movie_detail, name="movie-detailed")]
 ```
 
 5. Make sure you catch an error in `@api_view` in case that object doesn't exist. 
