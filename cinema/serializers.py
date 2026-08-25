@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from .models import Movie
 
+
 class MovieSerializer(serializers.Serializer):
    id = serializers.IntegerField(read_only=True)
    title = serializers.CharField(required=True, max_length=200)
