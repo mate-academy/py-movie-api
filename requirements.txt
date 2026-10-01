@@ -1,0 +1,15 @@
+asgiref==3.12.1
+black==26.5.1
+click==8.5.0
+Django==5.2.17
+djangorestframework==3.18.1
+flake8==7.4.1
+mccabe==0.7.0
+mypy_extensions==1.1.0
+packaging==26.3
+pathspec==1.1.1
+platformdirs==4.12.2
+pycodestyle==2.15.0
+pyflakes==4.0.1
+pytokens==0.4.1
+sqlparse==0.6.0
