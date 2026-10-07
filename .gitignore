@@ -1,0 +1,10 @@
+.sqlite
+.db3
+.pyc
+.idea
+.env
+node_modules/
+venv/
+.venv/
+__pycache__/
+.idea/
