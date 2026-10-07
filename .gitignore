@@ -1,0 +1,7 @@
+.idea/
+.venv/
+venv/
+db.sqlite3
+*.toml
+staticfiles/
+.env*
