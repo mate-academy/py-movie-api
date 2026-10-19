@@ -1,0 +1,5 @@
+[flake8]
+exclude = .git,.venv,venv,__pycache__
+max-line-length = 79
+inline-quotes = double
+extend-ignore = W391
