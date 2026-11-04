@@ -1,0 +1,20 @@
+[flake8]
+max-line-length = 88
+
+extend-ignore =
+    Q000,
+    Q001,
+    Q002,
+    Q003,
+    ANN101,
+    ANN201,
+    ANN204,
+    W503
+
+exclude =
+    .git,
+    .idea,
+    venv,
+    __pycache__,
+    migrations,
+    db.sqlite3
