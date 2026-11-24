@@ -1,0 +1,46 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="PyInterpreterInspection" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="PyPackageRequirementsInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredPackages">
+        <list>
+          <option value="asgiref" />
+          <option value="black" />
+          <option value="click" />
+          <option value="colorama" />
+          <option value="contourpy" />
+          <option value="cycler" />
+          <option value="flake8" />
+          <option value="fonttools" />
+          <option value="kiwisolver" />
+          <option value="matplotlib" />
+          <option value="mccabe" />
+          <option value="mypy_extensions" />
+          <option value="numpy" />
+          <option value="packaging" />
+          <option value="pathspec" />
+          <option value="pillow" />
+          <option value="platformdirs" />
+          <option value="pycodestyle" />
+          <option value="pyflakes" />
+          <option value="pyparsing" />
+          <option value="python-dateutil" />
+          <option value="pytokens" />
+          <option value="six" />
+          <option value="sqlparse" />
+          <option value="tzdata" />
+          <option value="psycopg2-binary" />
+          <option value="crispy-bootstrap4" />
+          <option value="Django" />
+          <option value="django-crispy-forms" />
+          <option value="django-debug-toolbar" />
+          <option value="django-theme-material-kit" />
+          <option value="gunicorn" />
+          <option value="python-dotenv" />
+          <option value="whitenoise" />
+        </list>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>
